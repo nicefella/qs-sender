@@ -1,0 +1,68 @@
+style.
+  body {
+    color:'#5f6062';
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  p {
+
+  }
+
+
+
+doctype html  
+html(lang='en')  
+ body
+    h2(style={color: '#009845'})=`Teklif ${teklifNo}`
+    p(style={color: '#5f6062'})=`Aşağıda bilgileri bulunan teklif içerisinde CM1 yüzdesi eşik altında olan ` 
+      b=`${esikAltiUrunAdet}`
+      =` ürün vardır. `
+
+    p(style={color:'#5f6062'}) 
+    p(style={color:'#5f6062'})=`Ürün ailesi : `
+      b=`${urunAilesi}`
+      =` | CM1 : `
+      b=`${cm1}`
+
+    ul
+      li
+        p
+            b=` Teklif no : ` 
+            =` ${teklifNo}`
+      li
+        p
+            b=` Teklifi Oluşturan : ` 
+            =` ${placer}`
+      li
+        p
+            b=` Tarih : ` 
+            =` ${tarih}`
+      li
+        p
+            b=` Firma : ` 
+            =` ${firma}`
+      li
+        p
+            b=` Vade : ` 
+            =` ${vade}`
+      li
+        p
+            b=` Versiyon : ` 
+            =` ${costVersion}`
+      li
+        p
+            b=` Para birimi : ` 
+            =` ${currency}`
+      li
+        p
+            b=` Alt toplam : ` 
+            =` ${alttoplam}`
+      
+
+
+    p(style={color:'#5f6062'}) Teklifin tüm dökümünü ekteki XLSX dosyasında bulabilirsiniz.
+
+    hr
+    small=`Bu e-posta şu alıcıya gönderildi: ${to}.  INKA | Istanbul | Turkey `
+  
+    a(href='https://inkafixing.com') Website 

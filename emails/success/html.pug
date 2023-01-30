@@ -1,0 +1,49 @@
+style.
+  body {
+    color:'#5f6062';
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  p {
+
+  }
+
+
+
+doctype html  
+html(lang='en')  
+ body
+    img(height=120,src='https://www.uponbi.com/wp-content/uploads/2020/06/LinkedinHeader.jpg' , alt='UponBI for Qlik Sense')
+
+    h2(style={color: '#009845'}) Welcome to UponBI
+    h3(style={color: '#5f6062'}) A true mobile BI experience for your Qlik Sense dashboards
+
+    p(style={color:'#5f6062'}) We're excited to have you onboard with UponBI. 
+    p(style={color:'#5f6062'}) Your free access request has been successfully submitted and now is being processed for the below Qlik Sense server information:
+
+    ul
+      li
+        p
+            b=` App Url : ` 
+            =` ${AppUrl}`
+      li
+        p
+            b=` User Directory : ` 
+            =` ${Directory}`
+
+
+    p(style={color:'#5f6062'})
+        | If you think something is wrong with this information, please feel free to 
+        a(href='mailto:info@uponbi.com') contact us 
+    p(style={color:'#5f6062'}) You can also re-submit the correct information using UponBI's free access request form.
+
+    p(style={color:'#5f6062'}) Otherwise, we will issue a free access key and provide you as soon as our review is completed.
+
+    p(style={color:'#5f6062'}) Sincerely,
+
+    p(style={color:'#5f6062'}) UponBI Team
+
+    hr
+    small=`This e-mail was sent to: ${to}. UponBI Yazilim Sanayi ve Dis Ticaret Anonim Sirketi | Fahrettin Kerim Gokay Cd 276 10 | Istanbul | Turkey `
+  
+    a(href='https://uponbi.com') Privacy Policy 
