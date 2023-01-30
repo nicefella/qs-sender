@@ -25,10 +25,10 @@ const { default: axios } = require('axios');
 const agent = new https.Agent({
      //  requestCert: true,
      //  rejectUnauthorized: true,
-     //  key: fs.readFileSync(path.resolve(__dirname, './cert/loc_client_key.pem')),
+     // key: fs.readFileSync(path.resolve(__dirname, './cert/loc_client_key.pem')),
      //  cert: fs.readFileSync(path.resolve(__dirname, './cert/loc_client.pem')),
      pfx: fs.readFileSync(path.resolve(__dirname, './cert/loc_client.pfx')),
-     passphrase: '1',
+     passphrase: 1,
 });
 
 const options = {
