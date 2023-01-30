@@ -17,5 +17,6 @@ app.post('/v2/notify', notify.post);
 app.get('/v2/notify', notify.get);
 app.get('/v2/reload', reload.get);
 app.get('/v2/start', reload.start);
+app.get('/v2/list', reload.list);
 
 module.exports = app;

@@ -31,8 +31,7 @@ const agent = new https.Agent({
      passphrase: '1',
 });
 
-const options = {
-     url: 'https://localhost:4242/qrs/task/d4041d6d-4bb3-42d3-afd4-67648b6bbf4d/start/synchronous?xrfkey=QW4XPIKvqj1goLux', // <---this is  a fake ip do not bother
+const baseOptions = {
      method: 'POST',
      httpsAgent: agent,
      headers: {
@@ -43,37 +42,53 @@ const options = {
 };
 
 
+function getStartTaskOptions(taskId) {
+     const url = ['https://localhost:4242/qrs/task/', taskId, '/start/synchronous?xrfkey=QW4XPIKvqj1goLux'].join('');
+     return {
+          ...baseOptions,
+          url,
+     };
+}
+
+function getAllTasksOptions() {
+     const url = 'https://localhost:4242/qrs/task/table?xrfkey=QW4XPIKvqj1goLux';
+     return {
+          ...baseOptions,
+          url,
+          data: {
+               entity: 'Task',
+               columns: [
+                    { name: 'id', columnType: 'Property', definition: 'id' },
+                    { name: 'name', columnType: 'Property', definition: 'name' },
+               ]
+          }
+     };
+}
+
 module.exports = {
-     start: async () => new Promise((resolve, reject) => {
+     startTaskById: async taskId => new Promise((resolve, reject) => {
           try {
-               axios(options)
+               axios(getStartTaskOptions(taskId))
                     .then((response) => {
                          resolve(response.data);
                     }).catch((err) => {
                          console.log(err);
                          reject(err);
                     });
-
-               /*  console.log({ op: options.pfx });
-               https.request(options, (res) => {
-                    resolve(res);
-               });
-
-               const req = https.request(options, (res) => {
-                    console.log(`statusCode: ${res.statusCode}`);
-
-                    res.on('data', (d) => {
-                         process.stdout.write(d);
+          } catch (ex) {
+               console.log(ex.message);
+               reject(ex);
+          }
+     }),
+     getAllTasks: async () => new Promise((resolve, reject) => {
+          try {
+               axios(getAllTasksOptions())
+                    .then((response) => {
+                         resolve(response.data);
+                    }).catch((err) => {
+                         console.log(err);
+                         reject(err);
                     });
-               });
-
-               req.on('error', (error) => {
-                    console.error(error);
-                    reject(error);
-               });
-
-               req.write(JSON.stringify({}));
-               req.end(); */
           } catch (ex) {
                console.log(ex.message);
                reject(ex);
