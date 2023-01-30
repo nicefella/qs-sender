@@ -11,8 +11,10 @@ const options = {
      port: 4242,
      path: '/qrs/task/d4041d6d-4bb3-42d3-afd4-67648b6bbf4d/start/synchronous?xrfkey=QW4XPIKvqj1goLux',
      method: 'POST',
-     key: fs.readFileSync(path.resolve(__dirname, './cert/loc_client_key.pem')),
-     cert: fs.readFileSync(path.resolve(__dirname, './cert/loc_client.pem')),
+     //  key: fs.readFileSync(path.resolve(__dirname, './cert/loc_client_key.pem')),
+     //  cert: fs.readFileSync(path.resolve(__dirname, './cert/loc_client.pem')),
+     pfx: fs.readFileSync(path.resolve(__dirname, './cert/loc_client.pfx')),
+     passphrase: '1',
      agent: false,
      headers: {
           'X-Qlik-Xrfkey': 'QW4XPIKvqj1goLux',
