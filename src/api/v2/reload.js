@@ -22,6 +22,7 @@ module.exports = {
                const session = await qs.init();
                const app = await session.openDoc(appId, '', '', '', false);
                const reload = await app.doReload();
+               const save = await app.doSave();
 
                return res.send(JSON.stringify({
                     result: 'success v2',
