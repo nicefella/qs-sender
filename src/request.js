@@ -5,11 +5,9 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const CONFIG = require('./../config.json');
 
-const { host } = CONFIG;
 const options = {
-     hostname: host,
+     hostname: 'localhost',
      port: 4242,
      path: '/qrs/task/d4041d6d-4bb3-42d3-afd4-67648b6bbf4d/start/synchronous?xrfkey=QW4XPIKvqj1goLux',
      method: 'POST',
