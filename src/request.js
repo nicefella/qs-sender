@@ -1,11 +1,7 @@
-
-
-const rootCas = require('ssl-root-cas').create();
-
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 // default for all https requests
 // (whether using https directly, request, or another module)
-require('https').globalAgent.options.ca = rootCas;
+
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
