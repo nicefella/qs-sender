@@ -60,6 +60,9 @@ function getAllTasksOptions() {
                columns: [
                     { name: 'id', columnType: 'Property', definition: 'id' },
                     { name: 'name', columnType: 'Property', definition: 'name' },
+                    {
+                         name: 'tags', columnType: 'List', definition: 'tag', list: [{ name: 'name', columnType: 'Property', definition: 'name' }, { name: 'id', columnType: 'Property', definition: 'id' }]
+                    }
                ]
           }
      };
@@ -84,7 +87,11 @@ module.exports = {
           try {
                axios(getAllTasksOptions())
                     .then((response) => {
-                         resolve(response.data.rows);
+                         const buttonTasksOnlyList = response.data.rows.filter(([, , tagNode]) => {
+                              const { rows } = tagNode;
+                              return rows.filter(([tagName]) => tagName === 'Button Task').length > 0;
+                         });
+                         resolve(buttonTasksOnlyList);
                     }).catch((err) => {
                          console.log(err);
                          reject(err);
