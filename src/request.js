@@ -84,7 +84,7 @@ module.exports = {
           try {
                axios(getAllTasksOptions())
                     .then((response) => {
-                         resolve(response.data);
+                         resolve(response.data.rows);
                     }).catch((err) => {
                          console.log(err);
                          reject(err);

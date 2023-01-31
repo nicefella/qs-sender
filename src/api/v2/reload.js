@@ -29,10 +29,10 @@ module.exports = {
 
      list: async (req, res) => {
           try {
-               const resid = await request.getAllTasks();
+               const rows = await request.getAllTasks();
                return res.send(JSON.stringify({
                     result: 'success',
-                    message: resid
+                    rows
                }));
           } catch (ex) {
                return res.send(JSON.stringify({
