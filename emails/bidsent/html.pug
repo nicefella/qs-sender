@@ -10,15 +10,15 @@ style.
 
 
 
-doctype html  
-html(lang='en')  
+doctype html
+html(lang='en')
  body
     h2(style={color: '#009845'})=`Teklif ${teklifNo}`
-    p(style={color: '#5f6062'})=`Aşağıda bilgileri bulunan teklif içerisinde CM1 yüzdesi eşik altında olan ` 
+    p(style={color: '#5f6062'})=`Aşağıda bilgileri bulunan teklif içerisinde CM1 yüzdesi eşik altında olan `
       b=`${esikAltiUrunAdet}`
       =` ürün vardır. `
 
-    p(style={color:'#5f6062'}) 
+    p(style={color:'#5f6062'})
     p(style={color:'#5f6062'})=`Ürün ailesi : `
       b=`${urunAilesi}`
       =` | CM1 : `
@@ -27,42 +27,42 @@ html(lang='en')
     ul
       li
         p
-            b=` Teklif no : ` 
+            b=` Teklif no : `
             =` ${teklifNo}`
       li
         p
-            b=` Teklifi Oluşturan : ` 
+            b=` Teklifi Oluşturan : `
             =` ${placer}`
       li
         p
-            b=` Tarih : ` 
+            b=` Tarih : `
             =` ${tarih}`
       li
         p
-            b=` Firma : ` 
+            b=` Firma : `
             =` ${firma}`
       li
         p
-            b=` Vade : ` 
+            b=` Vade : `
             =` ${vade}`
       li
         p
-            b=` Versiyon : ` 
+            b=` Versiyon : `
             =` ${costVersion}`
       li
         p
-            b=` Para birimi : ` 
+            b=` Para birimi : `
             =` ${currency}`
       li
         p
-            b=` Alt toplam : ` 
+            b=` Alt toplam : `
             =` ${alttoplam}`
-      
+
 
 
     p(style={color:'#5f6062'}) Teklifin tüm dökümünü ekteki XLSX dosyasında bulabilirsiniz.
 
     hr
-    small=`Bu e-posta şu alıcıya gönderildi: ${to}.  INKA | Istanbul | Turkey `
-  
-    a(href='https://inkafixing.com') Website 
+    small=`INKA | Istanbul | Turkey `
+
+    a(href='https://inkafixing.com') Website
