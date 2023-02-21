@@ -46,10 +46,10 @@ module.exports = {
           try {
                const { taskId } = req.query;
                const status = await request.getTaskStatus(taskId);
-               return res.send(JSON.stringify({
+               return res.send({
                     result: 'success',
                     status
-               }));
+               });
           } catch (ex) {
                return res.send(JSON.stringify({
                     result: 'error taskStatus',
