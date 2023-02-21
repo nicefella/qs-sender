@@ -18,6 +18,6 @@ app.get('/v2/notify', notify.get);
 app.get('/v2/reload', reload.get);
 app.get('/v2/start', reload.start);
 app.get('/v2/list', reload.list);
-app.get('v2/taskStatus', reload.taskStatus);
+app.get('/v2/taskStatus', reload.taskStatus);
 
 module.exports = app;
