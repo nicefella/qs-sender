@@ -62,7 +62,24 @@ function getAllTasksOptions() {
                     { name: 'name', columnType: 'Property', definition: 'name' },
                     {
                          name: 'tags', columnType: 'List', definition: 'tag', list: [{ name: 'name', columnType: 'Property', definition: 'name' }, { name: 'id', columnType: 'Property', definition: 'id' }]
-                    }
+                    },
+                    { name: 'status', columnType: 'Property', definition: 'operational.lastExecutionResult.status' }
+               ]
+          }
+     };
+}
+
+
+function getTaskLastStatus(taskId) {
+     const url = `https://localhost:4242/qrs/task/table?xrfkey=QW4XPIKvqj1goLux&filter=(id+eq+${taskId})`;
+     return {
+          ...baseOptions,
+          url,
+          data: {
+               entity: 'Task',
+               columns: [
+                    { name: 'id', columnType: 'Property', definition: 'id' },
+                    { name: 'status', columnType: 'Property', definition: 'operational.lastExecutionResult.status' }
                ]
           }
      };
@@ -92,6 +109,22 @@ module.exports = {
                               return rows.filter(([tagName]) => tagName === 'Button Task').length > 0;
                          });
                          resolve(buttonTasksOnlyList);
+                    }).catch((err) => {
+                         console.log(err);
+                         reject(err);
+                    });
+          } catch (ex) {
+               console.log(ex.message);
+               reject(ex);
+          }
+     }),
+     getTaskStatus: async taskId => new Promise((resolve, reject) => {
+          try {
+               axios(getTaskLastStatus(taskId))
+                    .then((response) => {
+                         const [taskNode] = response.data.rows;
+                         const [, status] = taskNode;
+                         resolve(status);
                     }).catch((err) => {
                          console.log(err);
                          reject(err);

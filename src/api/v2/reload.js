@@ -42,6 +42,22 @@ module.exports = {
           }
      },
 
+     taskStatus: async (req, res) => {
+          try {
+               const { taskId } = req.query;
+               const status = await request.getTaskStatus(taskId);
+               return res.send(JSON.stringify({
+                    result: 'success',
+                    status
+               }));
+          } catch (ex) {
+               return res.send(JSON.stringify({
+                    result: 'error taskStatus',
+                    message: ex.message
+               }));
+          }
+     },
+
      get: async (req, res) => {
           try {
                const { appId } = req.query;
