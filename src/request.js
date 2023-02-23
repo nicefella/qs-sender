@@ -36,7 +36,7 @@ const baseOptions = {
      httpsAgent: agent,
      headers: {
           'X-Qlik-Xrfkey': 'QW4XPIKvqj1goLux',
-          'X-Qlik-User': 'UserDirectory=INKAFIXING; UserId=QlikSense'
+          'X-Qlik-User': 'UserDirectory=INTERNAL; UserId=SA_SCHEDULER'
      },
      data: {}
 };
