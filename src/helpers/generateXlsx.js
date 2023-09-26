@@ -36,6 +36,15 @@ module.exports = async function generateXlsx(items, totals) {
                { v: 'CM1 Maliyet TL', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
                { v: 'CM2 Maliyet TL', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
                { v: 'CM3 Maliyet TL', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+
+               { v: 'Yeni Alt Toplam', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM1', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM1 %', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM2', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM2 %', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM3', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+               { v: 'Yeni CM3 %', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
+
                { v: 'Ürün Ailesi', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
           ];
 
@@ -67,7 +76,7 @@ module.exports = async function generateXlsx(items, totals) {
                     const alignment = index < 4 ? 'left' : 'right';
                     if (col.qAttrExps !== undefined) {
                          bgColor = col.qAttrExps.qValues[0].qText?.substring(1);
-                         console.log('color', { bgColor, col: col.qAttrExps.qValues[0] });
+                         //   console.log('color', { bgColor, col: col.qAttrExps.qValues[0] });
                          return {
                               v: col.qText,
                               t: 's',

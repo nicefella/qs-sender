@@ -80,10 +80,13 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
           const { qHyperCube: { qGrandTotalRow: totals } } = await detailTableObject.getLayout();
 
           console.log(`${teklifNo.qText} detay hypercube alındı. ${totals.length} satır`);
+
+          console.log(`${teklifNo.qText} detay hypercube alındı. ${JSON.stringify(totals)}`);
+
           const { fileName, file } = await generateXlsx(items, totals);
 
           const cm1 = totals[10].qText;
-          const cm1Yeni = totals[20].qText;
+          const cm1Yeni = totals[22].qText;
           // const { fileName, file } = await downloadFile(fileResponse.qUrl);
           console.log(`${teklifNo.qText} dosya indirildi.`);
           const locals = {
