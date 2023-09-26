@@ -61,7 +61,8 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
      return async function sendBidEmail(bid) {
           const [teklifNo, tarih, toplamUrunAdet, esikAltiUrunAdet, placer,
                currency, firma, , , alttoplam, kdv,
-               geneltoplam, costVersion, vade, urunAilesi] = bid;
+               geneltoplam, costVersion, vade, urunAilesi, esikAltiUrunAdetYeni,
+               maliyetiOlmayanUrunAdet, maliyetiolmayanalttoplam] = bid;
           console.log(`${teklifNo.qText} alınıyor`);
           await bidField.selectValues([{ qText: teklifNo.qText, isNumeric: false }]);
           console.log(`${teklifNo.qText} seçim uygulandı.`);
@@ -72,16 +73,17 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                {
                     qLeft: 0,
                     qTop: 0,
-                    qWidth: 30,
+                    qWidth: 34,
                     qHeight: 100
                },
           ]);
           const { qHyperCube: { qGrandTotalRow: totals } } = await detailTableObject.getLayout();
 
-          console.log(`${totals}`);
+          console.log(`${teklifNo.qText} detay hypercube alındı. ${totals.length} satır`);
           const { fileName, file } = await generateXlsx(items, totals);
 
           const cm1 = totals[10].qText;
+          const cm1Yeni = totals[20].qText;
           // const { fileName, file } = await downloadFile(fileResponse.qUrl);
           console.log(`${teklifNo.qText} dosya indirildi.`);
           const locals = {
@@ -99,6 +101,10 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                esikAltiUrunAdet: esikAltiUrunAdet.qText,
                urunAilesi: urunAilesi.qText,
                cm1,
+               cm1Yeni,
+               maliyetiolmayanalttoplam: maliyetiolmayanalttoplam.qText,
+               maliyetiOlmayanUrunAdet: maliyetiOlmayanUrunAdet.qText,
+               esikAltiUrunAdetYeni: esikAltiUrunAdetYeni.qText,
                to: 'ismail@noblapps.io'
           };
 
@@ -136,7 +142,7 @@ module.exports = {
                //  mailer.sendMail('ismail@noblapps.io', 'bidsent', {}, { file, fileName });
                //     console.log('FILE===', file);
                //  sendMail().catch(console.error);
-
+               console.log('notify');
                const session = await qs.init();
                const app = await session.openDoc(appId, '', '', '', false);
                const baseTableObject = await app.getObject(baseTableObjectId);
@@ -147,7 +153,7 @@ module.exports = {
                     {
                          qLeft: 0,
                          qTop: 0,
-                         qWidth: 15,
+                         qWidth: 18,
                          qHeight: 5
                     },
                ]);

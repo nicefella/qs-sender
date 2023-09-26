@@ -15,14 +15,17 @@ html(lang='en')
  body
     h2(style={color: '#009845'})=`Teklif ${teklifNo}`
     p(style={color: '#5f6062'})=`Aşağıda bilgileri bulunan teklif içerisinde CM1 yüzdesi eşik altında olan `
-      b=`${esikAltiUrunAdet}`
+      b=`${esikAltiUrunAdetYeni}`
+      =` ürün vardır. `
+    p(style={color: '#5f6062'})=`Maliyeti olmayan `
+      b=`${maliyetiOlmayanUrunAdet}`
       =` ürün vardır. `
 
     p(style={color:'#5f6062'})
     p(style={color:'#5f6062'})=`Ürün ailesi : `
       b=`${urunAilesi}`
       =` | CM1 : `
-      b=`${cm1}`
+      b=`${cm1Yeni}`
 
     ul
       li
@@ -57,7 +60,10 @@ html(lang='en')
         p
             b=` Alt toplam : `
             =` ${alttoplam}`
-
+      li
+        p
+            b=` Maliyeti Olmayan Alt toplam : `
+            =` ${maliyetiolmayanalttoplam}`
 
 
     p(style={color:'#5f6062'}) Teklifin tüm dökümünü ekteki XLSX dosyasında bulabilirsiniz.

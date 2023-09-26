@@ -7,6 +7,8 @@ module.exports = async function generateXlsx(items, totals) {
           const fileName = `Teklif ${generateId()}.xlsx`;
           const filePath = `./files/${fileName}`;
 
+          console.log('excel oluşturuluyor');
+
           const wb = XLSX.utils.book_new();
 
           const headers = [
@@ -37,6 +39,8 @@ module.exports = async function generateXlsx(items, totals) {
                { v: 'Ürün Ailesi', t: 's', s: { font: { sz: 11, bold: true, color: { rgb: '000000' } }, alignment: { horizontal: 'right' } } },
           ];
 
+          console.log('excel oluşturuluyor: headers');
+
           const subTotals = ['', '', '', {
                v: 'ALT TOPLAM',
                t: 's',
@@ -53,13 +57,17 @@ module.exports = async function generateXlsx(items, totals) {
                }
           }))];
 
+
+          console.log('excel oluşturuluyor: subtotals');
+
           // console.log(items);
           const rows = items.map((item) => {
                const row = item.map((col, index) => {
                     let bgColor = 'FFFFFF';
                     const alignment = index < 4 ? 'left' : 'right';
                     if (col.qAttrExps !== undefined) {
-                         bgColor = col.qAttrExps.qValues[0].qText.substring(1);
+                         bgColor = col.qAttrExps.qValues[0].qText?.substring(1);
+                         console.log('color', { bgColor, col: col.qAttrExps.qValues[0] });
                          return {
                               v: col.qText,
                               t: 's',
@@ -83,10 +91,16 @@ module.exports = async function generateXlsx(items, totals) {
                return row;
           });
 
+          console.log('excel oluşturuluyor: rows');
+
           const ws = XLSX.utils.aoa_to_sheet([headers, ...rows, subTotals]);
           XLSX.utils.book_append_sheet(wb, ws, 'readme demo');
 
+          console.log('excel oluşturuluyor: append');
+
           XLSX.writeFile(wb, filePath);
+
+          console.log('excel oluşturuluyor: writefile');
 
           resolve({
                fileName,
