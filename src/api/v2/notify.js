@@ -69,7 +69,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
           //   const fileResponse = await detailTableObject.exportData({ qFileType: 'OOXML', qPath: '/qHyperCubeDef' });
           console.log(`${teklifNo.qText} dosya export alındı.`);
 
-          const [{ qMatrix: items }] = await detailTableObject.getHyperCubeData('/qHyperCubeDef', [
+          const detailCubeData = await detailTableObject.getHyperCubeData('/qHyperCubeDef', [
                {
                     qLeft: 0,
                     qTop: 0,
@@ -77,6 +77,8 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                     qHeight: 100
                },
           ]);
+          const [{ qMatrix: items }] = detailCubeData;
+
           const { qHyperCube: { qGrandTotalRow: totals } } = await detailTableObject.getLayout();
 
           console.log(`${teklifNo.qText} detay hypercube alındı. ${totals.length} satır`);
@@ -152,7 +154,7 @@ module.exports = {
                const detailTableObject = await app.getObject(detailTableObjectId);
                const bidField = await app.getField(bidFieldName);
                const sendBidEmail = bidEmailerFunctionFactory({ bidField, detailTableObject });
-               const [{ qMatrix: bids }] = await baseTableObject.getHyperCubeData('/qHyperCubeDef', [
+               const cubeData = await baseTableObject.getHyperCubeData('/qHyperCubeDef', [
                     {
                          qLeft: 0,
                          qTop: 0,
@@ -160,6 +162,7 @@ module.exports = {
                          qHeight: 5
                     },
                ]);
+               const [{ qMatrix: bids }] = cubeData;
 
                await bids.reduce((previousPromise, bid) => previousPromise
                     .then(() => sendBidEmail(bid)), Promise.resolve());

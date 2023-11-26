@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const notify = require('./v2/notify');
 const reload = require('./v2/reload');
+const bank = require('./v2/bank');
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.options('*', cors());
 
 app.use(bodyParser.json());
 
+app.get('/v2/bank', bank.get);
 app.post('/v2/notify', notify.post);
 app.get('/v2/notify', notify.get);
 app.get('/v2/reload', reload.get);

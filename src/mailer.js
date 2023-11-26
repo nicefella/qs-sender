@@ -24,26 +24,31 @@ const email = new Email({
           from: visibleFrom
      },
      send: true,
-     preview: false,
+     preview: true,
      transport,
 });
 
 module.exports = {
-     sendMail(_, template, locals, { fileName, file }) {
+     sendMail(_, template, locals, { fileName, file } = {}) {
+          const options = {
+               template,
+               message: {
+                    to,
+               },
+               locals
+          };
+
+          if (fileName !== undefined) {
+               options.message.attachments = [
+                    {
+                         filename: fileName,
+                         content: file
+                    }
+               ];
+          }
+
           email
-               .send({
-                    template,
-                    message: {
-                         to,
-                         attachments: [
-                              {
-                                   filename: fileName,
-                                   content: file
-                              }
-                         ]
-                    },
-                    locals
-               })
+               .send(options)
                .then(console.log)
                .catch(console.error);
      }
