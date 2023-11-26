@@ -1,3 +1,5 @@
+meta(charset='utf-8')
+meta(name='viewport' content='width=device-width, initial-scale=1')
 style.
   body {
     color:'#5f60ff';
@@ -30,6 +32,14 @@ style.
         background-color: #d1e0e0;
         width: 25%;
       }
+
+    .column25 {
+        width:25%;
+    }
+
+    .column33 {
+        width:33.33%;
+    }
 
     .tcolumn {
         width: 33.33%;
@@ -69,9 +79,10 @@ style.
       }
 
 
-
 doctype html
 html(lang='en')
+meta(charset='utf-8')
+meta(name='viewport' content='width=device-width, initial-scale=1')
  body
     div.header
         h1(style={color: '#009845'})=`Bankalar Son Durum`
@@ -80,48 +91,48 @@ html(lang='en')
 
     table
       tr
-        td.column1
+        td.column25
             .title Bankadaki Para Toplam
             .number 123
-        td.column2
+        td.column25
             .title Bağlanan Para Toplam TL
             .number 123
-        td.column1
+        td.column25
             .title Blokeli Para Toplam TL
             .number 123
-        td.column1
+        td.column25
             .title Toplam Para Toplam TL
             .number 123
 
     table
         tr
-            td.column1
+            td.column33
                 .title Geçmiş Faiz ve Vergi
                 .number 123
-            td.column1
+            td.column33
                 .title Kalan Faiz ve Vergi
                 .number 123
-            td.column1
+            td.column33
                 .title Toplam Faiz ve Vergi
                 .number 123
         tr
-            td.column1
+            td.column33
                 .title Geçmiş Faiz Gelirleri
                 .number 123
-            td.column1
+            td.column33
                 .title Kalan Faiz Gelirleri
                 .number 123
-            td.column1
+            td.column33
                 .title Toplam Faiz Gelirleri
                 .number 123
         tr
-            td.column1
+            td.column33
                 .title Geçmiş Faiz Geliri-Faiz Gideri
                 .number 123
-            td.column1
+            td.column33
                 .title Kalan Faiz Geliri-Faiz Gideri
                 .number 123
-            td.column1
+            td.column33
                 .title Toplam Faiz Geliri-Faiz Gideri
                 .number 123
 
