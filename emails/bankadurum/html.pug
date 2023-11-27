@@ -34,8 +34,17 @@ style.
         background-color: #f3f3f3;
     }
 
+    .styled-table tbody tr:nth-child(even) {
+      background: #f3f3f3;
+    }
+
+
     .styled-table tbody tr:last-of-type {
         border-bottom: thin solid #009879;
+    }
+
+    .even {
+        background-color: #f3f3f3;
     }
 
     .green {
@@ -202,7 +211,7 @@ html(lang='en')
     meta(charset='utf-8')
   body
     h1(style={color: '#009845'})=`Bankalar Son Durum`
-    p(style={color: '#5f6062'})=`Güncelleme : 23.11.2023 17:30`
+    p(style={color: '#5f6062'})=`Güncelleme : ${guncelleme_tarihi}`
     table(style="width: 100%; height: 100%")
       tr
         td
@@ -296,7 +305,16 @@ html(lang='en')
                         th
                             .tm Bağlanması Gereken Para
                 tbody
-                each datum in faizOranlariVeMevduatlarData
+                each datum, index in faizOranlariVeMevduatlarData
+                  if(index % 2 === 0)
+                    tr
+                        td.column33.even
+                            .v #{datum[0].qText}
+                        td.column33.even
+                            .v #{datum[1].qText} ₺
+                        td.column33.even
+                            .v #{datum[2].qText} ₺
+                  else
                     tr
                         td.column33
                             .v #{datum[0].qText}
@@ -321,7 +339,18 @@ html(lang='en')
                         th.dollar
                             .tm Toplam USD
                 tbody
-                each datum in subeData
+                each datum, index in subeData
+                  if(index % 2 === 0)
+                    tr.even
+                        td
+                            .v #{datum[0].qText}
+                        td
+                            .v #{datum[10].qText}
+                        td
+                            .v #{datum[11].qText}
+                        td
+                            .v #{datum[12].qText}
+                  else
                     tr
                         td
                             .v #{datum[0].qText}
@@ -350,7 +379,20 @@ html(lang='en')
                         th
                             .tm Toplam TL
                 tbody
-                each datum in subeData
+                each datum, index in subeData
+                  if(index % 2 === 0)
+                    tr.even
+                        td(colspan=2)
+                            .v #{datum[0].qText}
+                        td
+                            .v #{datum[1].qText}
+                        td
+                            .v #{datum[4].qText}
+                        td
+                            .v #{datum[7].qText}
+                        td
+                            .v #{datum[10].qText}
+                  else
                     tr
                         td(colspan=2)
                             .v #{datum[0].qText}
@@ -381,7 +423,20 @@ html(lang='en')
                         th
                             .tm Toplam EUR
                 tbody
-                each datum in subeData
+                each datum, index in subeData
+                  if(index % 2 === 0)
+                    tr.even
+                        td(colspan=2)
+                            .v #{datum[0].qText}
+                        td
+                            .v #{datum[2].qText}
+                        td
+                            .v #{datum[5].qText}
+                        td
+                            .v #{datum[8].qText}
+                        td
+                            .v #{datum[11].qText}
+                  else
                     tr
                         td(colspan=2)
                             .v #{datum[0].qText}
@@ -412,7 +467,20 @@ html(lang='en')
                         th
                             .tm Toplam USD
                 tbody
-                each datum in subeData
+                each datum, index in subeData
+                  if(index % 2 === 0)
+                    tr.even
+                        td(colspan=2)
+                            .v #{datum[0].qText}
+                        td
+                            .v #{datum[3].qText}
+                        td
+                            .v #{datum[6].qText}
+                        td
+                            .v #{datum[9].qText}
+                        td
+                            .v #{datum[12].qText}
+                  else
                     tr
                         td(colspan=2)
                             .v #{datum[0].qText}
