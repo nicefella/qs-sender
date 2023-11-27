@@ -71,6 +71,26 @@ async function getKpiData({ app, objectId, useColoring = false }) {
      };
 }
 
+async function getTableData({
+     app, objectId, width = 20, height = 100
+}) {
+     const object = await app.getObject(objectId);
+     const layout = await object.getLayout();
+     const subeTableData = await object.getHyperCubeData('/qHyperCubeDef', [
+          {
+               qLeft: 0,
+               qTop: 0,
+               qWidth: width,
+               qHeight: height
+          },
+     ]);
+     const [{ qMatrix: data = [] } = {}] = subeTableData || [];
+     const { qHyperCube: { qGrandTotalRow: subTotals = [] } = {} } = layout;
+
+
+     return { data, subTotals };
+}
+
 
 module.exports = {
      get: async (req, res) => {
@@ -88,16 +108,9 @@ module.exports = {
                ]);
                const [{ qMatrix: faizOranlariVeMevduatlarData = [] } = {}] = cubeData1 || [];
 
-               const subeTableObject = await app.getObject(BANK_CONFIG.subeTable);
-               const subeTableData = await subeTableObject.getHyperCubeData('/qHyperCubeDef', [
-                    {
-                         qLeft: 0,
-                         qTop: 0,
-                         qWidth: 18,
-                         qHeight: 100
-                    },
-               ]);
-               const [{ qMatrix: subeData = [] } = {}] = subeTableData || [];
+               const { data: subeData, subTotals: subeSubTotals } = await getTableData({
+                    app, objectId: BANK_CONFIG.subeTable
+               });
 
                const { value: kpi_baglanan_para, style: kpi_baglanan_para_style } = await getKpiData({
                     app, objectId: BANK_CONFIG.kpi_baglanan_para, useColoring: false
@@ -159,6 +172,7 @@ module.exports = {
                     guncelleme_tarihi: getFormatedToday(),
                     faizOranlariVeMevduatlarData,
                     subeData,
+                    subeSubTotals,
 
                     kpi_bankadaki_para,
                     kpi_bankadaki_para_style,

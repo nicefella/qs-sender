@@ -152,6 +152,12 @@ style.
         font-weight:bold;
     }
 
+    .st {
+          font-size: 9px;
+          text-align:center;
+          font-weight: lighter;
+    }
+
     .t {
           font-size: 16px;
           text-align:center;
@@ -166,6 +172,11 @@ style.
 
     .v {
         font-size:24px;
+    }
+
+
+    .sv {
+        font-size:12px;
     }
 
    .title {
@@ -236,6 +247,65 @@ html(lang='en')
                             .v=`${kpi_blokeli_para}₺`
                         td.column25
                             .v=`${kpi_toplam_para}₺`
+            br
+            br
+            table.styled-table
+              thead
+                tr.green
+                  th
+                    .st Bankadaki Para TL
+                  th
+                    .st Bankadaki Para EUR
+                  th
+                    .st Bankadaki Para USD
+                  th
+                    .st Bağlanan Para TL
+                  th
+                    .st Bağlanan Para EUR
+                  th
+                    .st Bağlanan Para USD
+                  th
+                    .st Blokeli Para TL
+                  th
+                    .st Blokeli Para EUR
+                  th
+                    .st Blokeli Para USD
+                  th
+                    .st Toplam Para TL
+                  th
+                    .st Toplam Para EUR
+                  th
+                    .st Toplam Para USD
+                  th
+                    .st Toplam TL Karşılık
+              tbody
+                tr
+                  td
+                    .sv=`${subeSubTotals[0].qText}`
+                  td
+                    .sv=`${subeSubTotals[1].qText}`
+                  td
+                    .sv=`${subeSubTotals[2].qText}`
+                  td
+                    .sv=`${subeSubTotals[3].qText}`
+                  td
+                    .sv=`${subeSubTotals[4].qText}`
+                  td
+                    .sv=`${subeSubTotals[5].qText}`
+                  td
+                    .sv=`${subeSubTotals[6].qText}`
+                  td
+                    .sv=`${subeSubTotals[7].qText}`
+                  td
+                    .sv=`${subeSubTotals[8].qText}`
+                  td
+                    .sv=`${subeSubTotals[9].qText}`
+                  td
+                    .sv=`${subeSubTotals[10].qText}`
+                  td
+                    .sv=`${subeSubTotals[11].qText}`
+                  td
+                    .sv=`${subeSubTotals[12].qText}`
             br
             br
             table.styled-table
