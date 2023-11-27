@@ -153,7 +153,7 @@ style.
     }
 
     .st {
-          font-size: 9px;
+          font-size: 12px;
           text-align:center;
           font-weight: lighter;
     }
@@ -176,7 +176,7 @@ style.
 
 
     .sv {
-        font-size:12px;
+        font-size:16px;
     }
 
    .title {
@@ -409,6 +409,15 @@ html(lang='en')
                         th.dollar
                             .tm Toplam USD
                 tbody
+                    tr
+                        td
+                            .v.bold Tüm Şubeler
+                        td
+                            .v.bold=`${subeSubTotals[9].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[10].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[11].qText}`
                 each datum, index in subeData
                   if(index % 2 === 0)
                     tr.even
@@ -449,6 +458,17 @@ html(lang='en')
                         th
                             .tm Toplam TL
                 tbody
+                    tr
+                        td(colspan=2)
+                            .v.bold Tüm Şubeler
+                        td
+                            .v.bold=`${subeSubTotals[0].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[3].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[6].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[9].qText}`
                 each datum, index in subeData
                   if(index % 2 === 0)
                     tr.even
@@ -493,6 +513,17 @@ html(lang='en')
                         th
                             .tm Toplam EUR
                 tbody
+                    tr
+                        td(colspan=2)
+                            .v.bold Tüm Şubeler
+                        td
+                            .v.bold=`${subeSubTotals[1].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[4].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[7].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[10].qText}`
                 each datum, index in subeData
                   if(index % 2 === 0)
                     tr.even
@@ -537,6 +568,17 @@ html(lang='en')
                         th
                             .tm Toplam USD
                 tbody
+                    tr
+                        td(colspan=2)
+                            .v.bold Tüm Şubeler
+                        td
+                            .v.bold=`${subeSubTotals[2].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[5].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[8].qText}`
+                        td
+                            .v.bold=`${subeSubTotals[11].qText}`
                 each datum, index in subeData
                   if(index % 2 === 0)
                     tr.even
