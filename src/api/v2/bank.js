@@ -4,6 +4,7 @@
 const mailer = require('../../mailer');
 // const nodemailerNTLMAuth = require('nodemailer-ntlm-auth');
 const qs = require('../../qs');
+const CONFIG = require('./../../../config.json');
 
 
 const COLOR_POSITIVE = '#49a127';
@@ -154,7 +155,7 @@ module.exports = {
                });
 
 
-               mailer.sendMail('ismail@noblapps.io', 'bankadurum', {
+               mailer.sendMail(CONFIG.recipients.banka.to, 'bankadurum', {
                     guncelleme_tarihi: getFormatedToday(),
                     faizOranlariVeMevduatlarData,
                     subeData,

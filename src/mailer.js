@@ -3,7 +3,9 @@ const Email = require('email-templates');
 const CONFIG = require('./../config.json');
 
 const {
-     host, port, user, pass, to, visibleFrom
+     host, port, user, pass,
+     // to,
+     visibleFrom
 } = CONFIG.email;
 
 const transport = nodemailer.createTransport({
@@ -29,7 +31,7 @@ const email = new Email({
 });
 
 module.exports = {
-     sendMail(_, template, locals, { fileName, file } = {}) {
+     sendMail(to, template, locals, { fileName, file } = {}) {
           const options = {
                template,
                message: {

@@ -115,7 +115,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
 
           console.log(`${teklifNo.qText} dosya adı oluşturuldu.`);
 
-          mailer.sendMail(locals.to, 'bidsent', locals, { fileName, file });
+          mailer.sendMail(CONFIG.recipients.teklif.to, 'bidsent', locals, { fileName, file });
           console.log(`${teklifNo.qText} seçim temizlendi.`);
           await bidField.clear();
           console.log(`${teklifNo.qText} e-posta gönderildi.`);
