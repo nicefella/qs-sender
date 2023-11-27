@@ -68,6 +68,19 @@ style.
         color:#ffffff;
     }
 
+    .black {
+        background-color: #000000;
+        color:#ffffff;
+    }
+
+    .greentext {
+      color: #49a127;
+    }
+
+    .redtext {
+      color: #bf3032;
+    }
+
 
 
 
@@ -207,13 +220,13 @@ html(lang='en')
                 tbody
                     tr
                         td.column25
-                            .v 28.540.000 ₺
+                            .v=`${kpi_bankadaki_para}₺`
                         td.column25
-                            .v 28.540.000 ₺
+                            .v=`${kpi_baglanan_para}₺`
                         td.column25
-                            .v 28.540.000 ₺
+                            .v=`${kpi_blokeli_para}₺`
                         td.column25
-                            .v 28.540.000 ₺
+                            .v=`${kpi_toplam_para}₺`
             br
             br
             table.styled-table
@@ -228,11 +241,11 @@ html(lang='en')
                 tbody
                     tr
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_gecmis_fkv}₺`
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_kalan_fkv}₺`
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_toplam_fkv}₺`
 
             table.styled-table
                 thead
@@ -246,11 +259,11 @@ html(lang='en')
                 tbody
                     tr
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_gecmis_fg}₺`
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_kalan_fg}₺`
                         td.column33
-                            .v 28.540.000 ₺
+                            .v=`${kpi_toplam_fg}₺`
             table.styled-table
                 thead
                     tr.yellow
@@ -262,12 +275,12 @@ html(lang='en')
                             .tm Toplam Faiz Geliri-Faiz Gideri
                 tbody
                     tr
-                        td.column33
-                            .v 28.540.000 ₺
-                        td.column33
-                            .v 28.540.000 ₺
-                        td.column33.bold
-                            .v 28.540.000 ₺
+                        td.column33(style=kpi_gecmis_fark_style)
+                            .v=`${kpi_gecmis_fark}₺`
+                        td.column33(style=kpi_kalan_fark_style)
+                            .v=`${kpi_kalan_fark}₺`
+                        td.column33.bold(style=kpi_toplam_fark_style)
+                            .v=`${kpi_toplam_fark}₺`
             br
             br
             table.styled-table
@@ -283,53 +296,41 @@ html(lang='en')
                         th
                             .tm Bağlanması Gereken Para
                 tbody
+                each datum in faizOranlariVeMevduatlarData
                     tr
                         td.column33
-                            .v 30%
+                            .v #{datum[0].qText}
                         td.column33
-                            .v 28.540.000 ₺
+                            .v #{datum[1].qText} ₺
                         td.column33
-                            .v 120.000.000 ₺
-                    tr
-                        td.column33
-                            .v 30%
-                        td.column33
-                            .v 28.540.000 ₺
-                        td.column33
-                            .v 120.000.000 ₺
-                    tr
-                        td.column33
-                            .v 30%
-                        td.column33
-                            .v 28.540.000 ₺
-                        td.column33
-                            .v 120.000.000 ₺
+                            .v #{datum[2].qText} ₺
             br
             br
             table.styled-table
                 thead
-                    tr.green
+                    tr.black
                         th(colspan=4)
                             .tm.bold Şubelerdeki Hesap Bakiyeleri (Orijinal Para Birimine Göre)
                     tr.green
-                        th.column50
+                        th.column50.black
                             .tm Şube
-                        th
+                        th.blue
                             .tm Toplam TL
-                        th
+                        th.euro
                             .tm Toplam EUR
-                        th
+                        th.dollar
                             .tm Toplam USD
                 tbody
+                each datum in subeData
                     tr
                         td
-                            .v AKBANK GEBZE ŞUBESİ
+                            .v #{datum[0].qText}
                         td
-                            .v 28.540.000 ₺
+                            .v #{datum[10].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[11].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[12].qText}
             br
             br
             table.styled-table
@@ -349,17 +350,18 @@ html(lang='en')
                         th
                             .tm Toplam TL
                 tbody
+                each datum in subeData
                     tr
                         td(colspan=2)
-                            .v AKBANK GEBZE ŞUBESİ
+                            .v #{datum[0].qText}
                         td
-                            .v 28.540.000 ₺
+                            .v #{datum[1].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[4].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[7].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[10].qText}
             br
             br
             table.styled-table
@@ -379,17 +381,18 @@ html(lang='en')
                         th
                             .tm Toplam EUR
                 tbody
+                each datum in subeData
                     tr
                         td(colspan=2)
-                            .v AKBANK GEBZE ŞUBESİ
+                            .v #{datum[0].qText}
                         td
-                            .v 28.540.000 ₺
+                            .v #{datum[2].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[5].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[8].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[11].qText}
             br
             br
             table.styled-table
@@ -409,17 +412,19 @@ html(lang='en')
                         th
                             .tm Toplam USD
                 tbody
+                each datum in subeData
                     tr
                         td(colspan=2)
-                            .v AKBANK GEBZE ŞUBESİ
+                            .v #{datum[0].qText}
                         td
-                            .v 28.540.000 ₺
+                            .v #{datum[3].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[6].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[9].qText}
                         td
-                            .v 120.000.000 ₺
+                            .v #{datum[12].qText}
+
     hr
     small=`INKA | Istanbul | Turkey `
     a(href='https://inkafixing.com') Website
