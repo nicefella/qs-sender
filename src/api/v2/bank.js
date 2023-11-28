@@ -12,7 +12,7 @@ const COLOR_NEGATIVE = '#bf3032';
 
 
 const BANK_CONFIG = {
-     appId: 'e28a113f-71f3-41ad-afd6-ffeee9776fcf',
+     appId: '318d27a9-8743-47aa-9725-6efda1f9b21e',
 
      kpi_bankadaki_para: 'yJPQeRV',
      kpi_baglanan_para: 'ESNpYgm',
