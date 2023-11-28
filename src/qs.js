@@ -50,12 +50,13 @@ const signedToken = jwt.sign(token, key, { algorithm: 'RS256' });
 // certificatesPath, filename));
 
 
-module.exports = {
+const QIX = {
+     session: null,
      signedToken,
      init: async () => {
-          const session = enigma.create({
+          QIX.session = enigma.create({
                schema,
-               url: `ws://${engineHost}/jwt/app/${appId}`,
+               url: `ws://${engineHost}/jwt/app/${appId}/identity/qsServiceIdentity`,
                // Notice the non-standard second parameter here, this is how you pass in
                // additional configuration to the 'ws' npm library, if you use a different
                // library you may configure this differently:
@@ -73,16 +74,22 @@ module.exports = {
           });
 
           //    session.on('traffic:*', (direction, msg) => console.log(direction, msg));
-          session.on('error', (err) => {
+          QIX.session.on('error', (err) => {
                console.log(err);
           });
 
           try {
-               const global = await session.open();
+               const global = await QIX.session.open();
                return global;
           } catch (error) {
                console.log('Failed to open session and/or retrieve the app list:', error);
                return error.message;
           }
+     },
+
+     close: () => {
+          if (QIX.session !== null || QIX.session !== undefined) QIX.session.close();
      }
 };
+
+module.exports = QIX;

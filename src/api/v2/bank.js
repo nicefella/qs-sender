@@ -206,6 +206,8 @@ module.exports = {
 
                });
 
+               qs.close();
+
                return res.send(JSON.stringify({
                     result: 'banksuccess',
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
