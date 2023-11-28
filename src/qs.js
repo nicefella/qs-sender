@@ -23,10 +23,10 @@ const appId = 'engineData';
 
 // The Sense Enterprise-configured user directory for the user you want to identify
 // as:
-const userDirectory = 'INTERNAL'; // INKAFIXING
+const userDirectory = 'INKAFIXING';
 
 // The user to use when creating the session:
-const userId = 'sa_user';
+const userId = 'Qliksense';
 
 
 const token = {
@@ -73,7 +73,9 @@ module.exports = {
           });
 
           //    session.on('traffic:*', (direction, msg) => console.log(direction, msg));
-          session.on('error', (err) => { console.log(err); });
+          session.on('error', (err) => {
+               console.log(err);
+          });
 
           try {
                const global = await session.open();
