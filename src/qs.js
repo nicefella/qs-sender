@@ -23,10 +23,10 @@ const appId = 'engineData';
 
 // The Sense Enterprise-configured user directory for the user you want to identify
 // as:
-const userDirectory = 'INKAFIXING';
+const userDirectory = 'INTERNAL'; // INKAFIXING
 
 // The user to use when creating the session:
-const userId = 'Qliksense';
+const userId = 'sa_user';
 
 
 const token = {
@@ -65,10 +65,10 @@ module.exports = {
                     //   key: readCert('client_key.pem'),
                     //   cert: readCert('client.pem'),
                     rejectUnauthorized: false,
-               //   headers: {
-               //     'X-Qlik-User': `UserDirectory=${encodeURIComponent(userDirectory)};
-               // UserId=${encodeURIComponent(userId)}`,
-               //   },
+                    //   headers: {
+                    //     'X-Qlik-User': `UserDirectory=${encodeURIComponent(userDirectory)};
+                    // UserId=${encodeURIComponent(userId)}`,
+                    //   },
                }),
           });
 
