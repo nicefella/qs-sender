@@ -207,12 +207,12 @@ module.exports = {
                });
 
                return res.send(JSON.stringify({
-                    result: 'success v2',
+                    result: 'banksuccess',
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
                }));
           } catch (ex) {
                return res.send(JSON.stringify({
-                    result: 'error v2',
+                    result: 'bankerror',
                     message: ex.message
                }));
           }
