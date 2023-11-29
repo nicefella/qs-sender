@@ -213,6 +213,7 @@ module.exports = {
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
                }));
           } catch (ex) {
+               qs.close();
                return res.send(JSON.stringify({
                     result: 'bankerror',
                     message: ex.message
