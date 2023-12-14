@@ -79,7 +79,8 @@ function getTaskLastStatus(taskId) {
                entity: 'Task',
                columns: [
                     { name: 'id', columnType: 'Property', definition: 'id' },
-                    { name: 'status', columnType: 'Property', definition: 'operational.lastExecutionResult.status' }
+                    { name: 'status', columnType: 'Property', definition: 'operational.lastExecutionResult.status' },
+                    { name: 'duration', columnType: 'Property', definition: 'operational.lastExecutionResult.duration' }
                ]
           }
      };
@@ -123,8 +124,8 @@ module.exports = {
                axios(getTaskLastStatus(taskId))
                     .then((response) => {
                          const [taskNode] = response.data.rows;
-                         const [, status] = taskNode;
-                         resolve(status);
+                         const [, status, duration] = taskNode;
+                         resolve({ status, duration });
                     }).catch((err) => {
                          console.log(err);
                          reject(err);

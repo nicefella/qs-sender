@@ -45,10 +45,11 @@ module.exports = {
      taskStatus: async (req, res) => {
           try {
                const { taskId } = req.query;
-               const status = await request.getTaskStatus(taskId);
+               const { status, duration } = await request.getTaskStatus(taskId);
                return res.send({
                     result: 'success',
-                    status
+                    status,
+                    duration
                });
           } catch (ex) {
                return res.send(JSON.stringify({
