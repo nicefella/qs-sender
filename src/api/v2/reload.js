@@ -14,10 +14,13 @@ module.exports = {
      start: async (req, res) => {
           try {
                const { taskId } = req.query;
+               const { status, duration } = await request.getTaskStatus(taskId);
                const resid = await request.startTaskById(taskId);
                return res.send(JSON.stringify({
                     result: 'success',
-                    message: resid
+                    message: resid,
+                    status,
+                    duration
                }));
           } catch (ex) {
                return res.send(JSON.stringify({
