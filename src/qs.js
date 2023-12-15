@@ -26,7 +26,7 @@ const appId = 'engineData';
 const userDirectory = 'INKAFIXING';
 
 // The user to use when creating the session:
-const userId = 'Qliksense';
+const userId = 'Qlik1';
 
 
 const token = {
