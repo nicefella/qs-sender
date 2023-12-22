@@ -86,6 +86,16 @@ function getTaskLastStatus(taskId) {
      };
 }
 
+
+function uploadFileOptions(contentLibraryId, fileName, file) {
+     const url = `https://localhost:4242/qrs/ContentLibrary/${contentLibraryId}/uploadfile?externalpath=${fileName}&overwrite=true&scanfile=true&xrfkey=QW4XPIKvqj1goLux`;
+     return {
+          ...baseOptions,
+          url,
+          data: file
+     };
+}
+
 module.exports = {
      startTaskById: async taskId => new Promise((resolve, reject) => {
           try {
@@ -126,6 +136,21 @@ module.exports = {
                          const [taskNode] = response.data.rows;
                          const [, status, duration] = taskNode;
                          resolve({ status, duration });
+                    }).catch((err) => {
+                         console.log(err);
+                         reject(err);
+                    });
+          } catch (ex) {
+               console.log(ex.message);
+               reject(ex);
+          }
+     }),
+     uploadFile: async (contentLibraryId, fileName, file) => new Promise((resolve, reject) => {
+          try {
+               axios(uploadFileOptions(contentLibraryId, fileName, file))
+                    .then((response) => {
+                         const uploadResponse = response.data;
+                         resolve({ uploadResponse });
                     }).catch((err) => {
                          console.log(err);
                          reject(err);
