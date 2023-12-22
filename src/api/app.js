@@ -11,10 +11,13 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 app.options('*', cors());
 
 app.use(bodyParser.json());
-
+app.use(bodyParser.raw({ type: 'application/octet-stream', limit: '2mb' }));
 app.get('/v2/bank', bank.get);
 app.post('/v2/notify', notify.post);
 app.get('/v2/notify', notify.get);
