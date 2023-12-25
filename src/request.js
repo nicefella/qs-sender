@@ -150,7 +150,7 @@ module.exports = {
                axios(uploadFileOptions(contentLibraryId, fileName, file))
                     .then((response) => {
                          const uploadResponse = response.data;
-                         resolve({ uploadResponse });
+                         resolve(uploadResponse);
                     }).catch((err) => {
                          console.log(err);
                          reject(err);
