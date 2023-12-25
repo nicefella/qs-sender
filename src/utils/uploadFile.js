@@ -7,7 +7,7 @@ async function uploadFile(customerId, invoiceId) {
           try {
                const filePath = `files/html/${customerId}_${invoiceId}.html`;
                const fileData = fs.readFileSync(filePath);
-               const fileName = `${invoiceId}.html`;
+               const fileName = `${customerId}_${invoiceId}.html`;
 
                request.uploadFile('invoices', fileName, fileData).then((fileUrl) => {
                     resolve(fileUrl);
