@@ -1,11 +1,11 @@
 const fs = require('fs');
 const request = require('../request');
 
-async function uploadFile(invoiceId) {
+async function uploadFile(customerId, invoiceId) {
      return new Promise(((resolve, reject) => {
           // Read the file as a binary data
           try {
-               const filePath = `files/html/${invoiceId}.html`;
+               const filePath = `files/html/${customerId}_${invoiceId}.html`;
                const fileData = fs.readFileSync(filePath);
                const fileName = `${invoiceId}.html`;
 

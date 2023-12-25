@@ -18,7 +18,7 @@ async function generate(customerId, invoiceId) {
 
           await transformXmlToHtml(customerId, invoiceId);
 
-          const fileUrl = await uploadFile(invoiceId);
+          const fileUrl = await uploadFile(customerId, invoiceId);
 
           return fileUrl;
      } catch (ex) {
