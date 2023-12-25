@@ -6,6 +6,7 @@ const notify = require('./v2/notify');
 const reload = require('./v2/reload');
 const bank = require('./v2/bank');
 const contentlib = require('./v2/contentlib');
+const generate = require('./v2/generate');
 
 const app = express();
 app.use(cors());
@@ -26,5 +27,5 @@ app.get('/v2/start', reload.start);
 app.get('/v2/list', reload.list);
 app.get('/v2/taskStatus', reload.taskStatus);
 app.post('/v2/upload', contentlib.upload);
-
+app.get('/v2/generate', generate.generate);
 module.exports = app;
