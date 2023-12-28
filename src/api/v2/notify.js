@@ -167,11 +167,14 @@ module.exports = {
                await bids.reduce((previousPromise, bid) => previousPromise
                     .then(() => sendBidEmail(bid)), Promise.resolve());
 
+               qs.close();
+
                return res.send(JSON.stringify({
                     result: 'success v2',
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
                }));
           } catch (ex) {
+               qs.close();
                return res.send(JSON.stringify({
                     result: 'error v2',
                     message: ex.message
