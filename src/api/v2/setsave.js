@@ -16,14 +16,15 @@ module.exports = {
                const variable = await app.getVariableByName(vName);
                const variableById = await app.getVariableById(vId);
                const ves = await variable.setStringValue(value);
+               const vesById = await variableById.setStringValue(value);
 
                qs.close();
 
                return res.send(JSON.stringify({
                     result: 'setsuccess',
-                    variable: JSON.stringify(variable),
                     ves: JSON.stringify(ves),
-                    vesById: JSON.stringify(variableById)
+                    vesById: JSON.stringify(vesById),
+
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
                }));
           } catch (ex) {
