@@ -15,8 +15,11 @@ module.exports = {
                const app = await session.openDoc(appId, '', '', '', false);
                //    const variable = await app.getVariableByName(vName);
                const variableById = await app.getVariableById(vId);
+
+               const vcontent = await variableById.getRawContent();
                //    const ves = await variable.setStringValue(value);
                const vesById = await variableById.setStringValue(value);
+
 
                qs.close();
 
@@ -27,6 +30,8 @@ module.exports = {
                     vId,
                     vName,
                     appId,
+                    vcontent: JSON.stringify(vcontent),
+                    value
 
 
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
