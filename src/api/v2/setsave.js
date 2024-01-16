@@ -13,17 +13,21 @@ module.exports = {
                } = req.query;
                const session = await qs.init();
                const app = await session.openDoc(appId, '', '', '', false);
-               const variable = await app.getVariableByName(vName);
+               //    const variable = await app.getVariableByName(vName);
                const variableById = await app.getVariableById(vId);
-               const ves = await variable.setStringValue(value);
+               //    const ves = await variable.setStringValue(value);
                const vesById = await variableById.setStringValue(value);
 
                qs.close();
 
                return res.send(JSON.stringify({
                     result: 'setsuccess',
-                    ves: JSON.stringify(ves),
+                    //    ves: JSON.stringify(ves),
                     vesById: JSON.stringify(vesById),
+                    vId,
+                    vName,
+                    appId,
+
 
                     // message: `${bids.length} teklif e-posta olarak gönderildi!`
                }));
