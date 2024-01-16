@@ -9,6 +9,8 @@ const getMethods = obj => Object.getOwnPropertyNames(obj).filter(item => typeof 
 
 const getStringMethods = obj => Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'string');
 
+const getAllMethods = obj => Object.getOwnPropertyNames(obj);
+
 
 module.exports = {
      get: async (req, res) => {
@@ -34,6 +36,7 @@ module.exports = {
                     appId,
                     variableById: JSON.stringify(getMethods(variableById)),
                     getStringMethods: JSON.stringify(getStringMethods(variableById)),
+                    getAllMethods: JSON.stringify(getAllMethods(variableById)),
                     value
 
 
