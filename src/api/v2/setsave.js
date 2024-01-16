@@ -1,0 +1,29 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable camelcase */
+// const errors = require('restify-errors');
+// const nodemailerNTLMAuth = require('nodemailer-ntlm-auth');
+const qs = require('../../qs');
+
+
+module.exports = {
+     get: async (req, res) => {
+          try {
+               const { appId, vName, value } = req.query;
+               const session = await qs.init();
+               const app = await session.openDoc(appId, '', '', '', false);
+               const variable = await app.getVariableByName(vName);
+               await variable.setStringValue(value);
+               qs.close();
+               return res.send(JSON.stringify({
+                    result: 'setsuccess',
+                    // message: `${bids.length} teklif e-posta olarak gönderildi!`
+               }));
+          } catch (ex) {
+               qs.close();
+               return res.send(JSON.stringify({
+                    result: 'seterror',
+                    message: ex.message
+               }));
+          }
+     }
+};
