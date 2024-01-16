@@ -7,6 +7,8 @@ const qs = require('../../qs');
 
 const getMethods = obj => Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'function');
 
+const getStringMethods = obj => Object.getOwnPropertyNames(obj).filter(item => typeof obj[item] === 'string');
+
 
 module.exports = {
      get: async (req, res) => {
@@ -31,6 +33,7 @@ module.exports = {
                     vName,
                     appId,
                     variableById: JSON.stringify(getMethods(variableById)),
+                    getStringMethods: JSON.stringify(getStringMethods(variableById)),
                     value
 
 
