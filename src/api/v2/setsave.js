@@ -37,6 +37,8 @@ module.exports = {
                     variableById: JSON.stringify(getMethods(variableById)),
                     getStringMethods: JSON.stringify(getStringMethods(variableById)),
                     getAllMethods: JSON.stringify(getAllMethods(variableById)),
+                    genericType: variableById.genericType,
+                    type: variableById.type,
                     value
 
 
