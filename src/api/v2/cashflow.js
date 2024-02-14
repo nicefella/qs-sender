@@ -3,6 +3,7 @@
 // const errors = require('restify-errors');
 // const nodemailerNTLMAuth = require('nodemailer-ntlm-auth');
 const excel = require('../../excel');
+const { makeAnErkekDate } = require('../../helpers/date');
 const CONFIG = require('./../../../config.json');
 
 const { filePath } = CONFIG.cashflow; // '/Users/ismail/Documents/INKA/cash.xlsx';
@@ -13,12 +14,14 @@ module.exports = {
                const {
                     Tarih, CikisPB, GirisPB, Tutar
                } = req.body;
+               const date = makeAnErkekDate(Tarih);
                const done = excel.appendRow(filePath, {
-                    Tarih, CikisPB, GirisPB, Tutar
+                    Tarih: date, CikisPB, GirisPB, Tutar
                });
                return res.send(JSON.stringify({
                     result: 'success',
-                    done
+                    done,
+                    date
                }));
           } catch (ex) {
                return res.send(JSON.stringify({
@@ -32,12 +35,14 @@ module.exports = {
                const {
                     Tarih, CikisPB, GirisPB, Tutar
                } = req.body;
+               const date = makeAnErkekDate(Tarih);
                const done = excel.deleteRow(filePath, {
-                    Tarih, CikisPB, GirisPB, Tutar
+                    Tarih: date, CikisPB, GirisPB, Tutar
                });
                return res.send(JSON.stringify({
                     result: 'success',
-                    done
+                    done,
+                    date
                }));
           } catch (ex) {
                return res.send(JSON.stringify({
