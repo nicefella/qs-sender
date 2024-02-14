@@ -60,10 +60,10 @@ const deleteRow = (filePath, {
           workbook.Sheets[sheetName] = newWorksheet;
           XLSX.writeFile(workbook, filePath);
           console.log('Row deleted successfully.');
-     } else {
-          console.log('Date not found.');
+          return true;
      }
-     return true;
+     console.log('Date not found.');
+     return false;
 };
 
 // Example Usage
