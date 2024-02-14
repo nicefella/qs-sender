@@ -8,6 +8,7 @@ const bank = require('./v2/bank');
 const contentlib = require('./v2/contentlib');
 const generate = require('./v2/generate');
 const setsave = require('./v2/setsave');
+const cashflow = require('./v2/cashflow');
 
 const app = express();
 app.use(cors());
@@ -30,4 +31,7 @@ app.get('/v2/taskStatus', reload.taskStatus);
 app.post('/v2/upload', contentlib.upload);
 app.get('/v2/generate', generate.generate);
 app.get('/v2/setsave', setsave.get);
+app.post('/v2/cashflow/append', cashflow.append);
+app.post('/v2/cashflow/delete', cashflow.delete);
+
 module.exports = app;
