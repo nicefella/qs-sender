@@ -16,7 +16,7 @@ module.exports = {
                } = req.body;
                const date = makeAnErkekDate(Tarih);
                const done = excel.appendRow(filePath, {
-                    Tarih: date, CikisPB, GirisPB, Tutar
+                    Tarih, CikisPB, GirisPB, Tutar
                });
                return res.send(JSON.stringify({
                     result: 'success',
@@ -37,7 +37,7 @@ module.exports = {
                } = req.body;
                const date = makeAnErkekDate(Tarih);
                const done = excel.deleteRow(filePath, {
-                    Tarih: date, CikisPB, GirisPB, Tutar
+                    Tarih, CikisPB, GirisPB, Tutar
                });
                return res.send(JSON.stringify({
                     result: 'success',
