@@ -45,7 +45,7 @@ const deleteRow = (filePath, {
      const workbook = XLSX.readFile(filePath);
      const sheetName = 'Transfer'; // workbook.SheetNames[0];
      const worksheet = workbook.Sheets[sheetName];
-     const jsonSheet = XLSX.utils.sheet_to_json(worksheet, { raw: false });
+     const jsonSheet = XLSX.utils.sheet_to_json(worksheet, { raw: true });
      // const jsonSheet = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false });
      // Find and remove the row
      // console.log('jsonSheet2delete', jsonSheet);
