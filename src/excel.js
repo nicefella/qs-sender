@@ -40,7 +40,7 @@ const appendRow = (filePath, newRow) => {
 
 // Function to delete a row with a given date
 const deleteRow = (filePath, {
-     Tarih, CikisPB, GirisPB, Tutar
+     Tarih, CikisPB, GirisPB
 }) => {
      const workbook = XLSX.readFile(filePath);
      const sheetName = 'Transfer'; // workbook.SheetNames[0];
