@@ -52,9 +52,7 @@ const deleteRow = (filePath, {
 
      const rowIndex = jsonSheet.findIndex(row => row.Tarih === Tarih
           && row.CikisPB === CikisPB
-          && row.GirisPB === GirisPB
-          // && row.Tutar === `${Tutar}`
-     );
+          && row.GirisPB === GirisPB);
      if (rowIndex > -1) {
           jsonSheet.splice(rowIndex, 1);
           const newWorksheet = XLSX.utils.json_to_sheet(jsonSheet);
