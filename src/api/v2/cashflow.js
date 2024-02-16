@@ -14,9 +14,10 @@ module.exports = {
                const {
                     Tarih, CikisPB, GirisPB, Tutar
                } = req.body;
+               const TutarAsNumber = parseFloat(Tutar).toFixed(2) * 1;
                const date = makeAnErkekDate(Tarih);
                const done = excel.appendRow(filePath, {
-                    Tarih, CikisPB, GirisPB, Tutar: 1200.34
+                    Tarih, CikisPB, GirisPB, Tutar: TutarAsNumber
                });
                return res.send(JSON.stringify({
                     result: 'success',
