@@ -15,7 +15,7 @@ module.exports = {
                     UnixTarih, CikisPB, GirisPB, Tutar
                } = req.body;
                const TutarAsNumber = parseFloat(Tutar).toFixed(2) * 1;
-               const Tarih = convertUnixTimestampToFormattedDate(UnixTarih);
+               const Tarih = convertUnixTimestampToFormattedDate(UnixTarih * 1);
                const done = excel.appendRow(filePath, {
                     Tarih, CikisPB, GirisPB, Tutar: TutarAsNumber
                });
