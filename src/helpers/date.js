@@ -1,10 +1,11 @@
 
-const makeAnErkekDate = (YumusakDate) => {
-     const parts = YumusakDate.split('.'); // 2023-01-23 // 01.02.2023
-     const mydate = new Date(parts[2], parts[1] - 1, parts[0]);
-     return mydate.toDateString();
-};
-
+function convertUnixTimestampToFormattedDate(unixTimestamp) {
+     const date = new Date(unixTimestamp); // Convert to milliseconds
+     const day = date.getDate().toString().padStart(2, '0');
+     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+     const year = date.getFullYear();
+     return `${day}.${month}.${year}`;
+}
 module.exports = {
-     makeAnErkekDate
+     convertUnixTimestampToFormattedDate
 };
