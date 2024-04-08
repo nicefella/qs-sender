@@ -120,6 +120,11 @@ style.
         width:25%;
     }
 
+    .column25NoBorder {
+        width:25%;
+        border: none !important;
+    }
+
     .column30 {
         width:30%;
     }
@@ -263,15 +268,14 @@ html(lang='en')
                             .t
                 tbody
                     tr
-                        td.column25
+                        td.column25NoBorder
                             .v=``
                         td.column25
                             .v=`${kpi_odenecek_anapara}₺`
-                        td.column25
+                        td.column25NoBorder
                             .v=``
-                        td.column25
+                        td.column25NoBorder
                             .v=``
-            br
             table.styled-table
                 thead
                     tr.green
