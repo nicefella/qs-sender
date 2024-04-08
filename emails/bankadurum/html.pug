@@ -214,6 +214,11 @@ style.
           font-weight:bold;
       }
 
+      .empty {
+        background-color: #ffffff;
+        color: #000000;
+      }
+
       .bankadaki {
         background-color: #ddedea;
         color: #000000;
@@ -245,6 +250,28 @@ html(lang='en')
     table(style="width: 100%; height: 100%")
       tr
         td
+            table.styled-table
+                thead
+                    tr.green
+                        th.empty
+                            .t
+                        th.baglanan
+                            .t Ödenecek Anapara
+                        th.empty
+                            .t
+                        th.empty
+                            .t
+                tbody
+                    tr
+                        td.column25
+                            .v=``
+                        td.column25
+                            .v=`${kpi_odenecek_anapara}₺`
+                        td.column25
+                            .v=``
+                        td.column25
+                            .v=``
+            br
             table.styled-table
                 thead
                     tr.green
