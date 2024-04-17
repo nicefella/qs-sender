@@ -1,11 +1,15 @@
-const nodemailer = require('nodemailer');
-const Email = require('email-templates');
-const CONFIG = require('./../config.json');
+/* eslint-disable quotes */
+const nodemailer = require("nodemailer");
+const Email = require("email-templates");
+const CONFIG = require("./../config.json");
 
 const {
-     host, port, user, pass,
+     host,
+     port,
+     user,
+     pass,
      // to,
-     visibleFrom
+     visibleFrom,
 } = CONFIG.email;
 
 const transport = nodemailer.createTransport({
@@ -14,16 +18,16 @@ const transport = nodemailer.createTransport({
      secure: false,
      auth: {
           user,
-          pass
+          pass,
      },
      tls: {
           rejectUnauthorized: false,
-     }
+     },
 });
 
 const email = new Email({
      message: {
-          from: visibleFrom
+          from: visibleFrom,
      },
      send: true,
      preview: true,
@@ -36,22 +40,21 @@ module.exports = {
                template,
                message: {
                     to,
+                    // eslint-disable-next-line quotes
+                    bcc: "info@noblapps.io",
                },
-               locals
+               locals,
           };
 
           if (fileName !== undefined) {
                options.message.attachments = [
                     {
                          filename: fileName,
-                         content: file
-                    }
+                         content: file,
+                    },
                ];
           }
 
-          email
-               .send(options)
-               .then(console.log)
-               .catch(console.error);
-     }
+          email.send(options).then(console.log).catch(console.error);
+     },
 };
