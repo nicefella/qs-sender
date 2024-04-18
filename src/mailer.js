@@ -41,7 +41,7 @@ module.exports = {
                message: {
                     to,
                     // eslint-disable-next-line quotes
-                    bcc: "info@noblapps.io",
+                    // bcc: "info@noblapps.io",
                },
                locals,
           };
