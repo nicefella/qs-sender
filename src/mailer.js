@@ -35,11 +35,12 @@ const email = new Email({
 });
 
 module.exports = {
-     sendMail(to, template, locals, { fileName, file } = {}) {
+     sendMail({ to, bcc = "" }, template, locals, { fileName, file } = {}) {
           const options = {
                template,
                message: {
                     to,
+                    bcc,
                     // eslint-disable-next-line quotes
                     // bcc: "info@noblapps.io",
                },

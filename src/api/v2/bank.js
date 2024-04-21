@@ -229,45 +229,52 @@ module.exports = {
                     useColoring: true,
                });
 
-               mailer.sendMail(CONFIG.recipients.banka.to, "bankadurum", {
-                    guncelleme_tarihi: getFormatedToday(),
-                    faizOranlariVeMevduatlarData,
-                    subeData,
-                    subeSubTotals,
+               mailer.sendMail(
+                    {
+                         to: CONFIG.recipients.banka.to,
+                         bcc: CONFIG.recipients.banka.bcc,
+                    },
+                    "bankadurum",
+                    {
+                         guncelleme_tarihi: getFormatedToday(),
+                         faizOranlariVeMevduatlarData,
+                         subeData,
+                         subeSubTotals,
 
-                    kpi_odenecek_anapara,
-                    kpi_odenecek_anapara_style,
+                         kpi_odenecek_anapara,
+                         kpi_odenecek_anapara_style,
 
-                    kpi_bankadaki_para,
-                    kpi_bankadaki_para_style,
-                    kpi_baglanan_para,
-                    kpi_baglanan_para_style,
-                    kpi_blokeli_para,
-                    kpi_blokeli_para_style,
-                    kpi_toplam_para,
-                    kpi_toplam_para_style,
+                         kpi_bankadaki_para,
+                         kpi_bankadaki_para_style,
+                         kpi_baglanan_para,
+                         kpi_baglanan_para_style,
+                         kpi_blokeli_para,
+                         kpi_blokeli_para_style,
+                         kpi_toplam_para,
+                         kpi_toplam_para_style,
 
-                    kpi_gecmis_fkv,
-                    kpi_gecmis_fkv_style,
-                    kpi_kalan_fkv,
-                    kpi_kalan_fkv_style,
-                    kpi_toplam_fkv,
-                    kpi_toplam_fkv_style,
+                         kpi_gecmis_fkv,
+                         kpi_gecmis_fkv_style,
+                         kpi_kalan_fkv,
+                         kpi_kalan_fkv_style,
+                         kpi_toplam_fkv,
+                         kpi_toplam_fkv_style,
 
-                    kpi_gecmis_fg,
-                    kpi_gecmis_fg_style,
-                    kpi_kalan_fg,
-                    kpi_kalan_fg_style,
-                    kpi_toplam_fg,
-                    kpi_toplam_fg_style,
+                         kpi_gecmis_fg,
+                         kpi_gecmis_fg_style,
+                         kpi_kalan_fg,
+                         kpi_kalan_fg_style,
+                         kpi_toplam_fg,
+                         kpi_toplam_fg_style,
 
-                    kpi_gecmis_fark,
-                    kpi_gecmis_fark_style,
-                    kpi_kalan_fark,
-                    kpi_kalan_fark_style,
-                    kpi_toplam_fark,
-                    kpi_toplam_fark_style,
-               });
+                         kpi_gecmis_fark,
+                         kpi_gecmis_fark_style,
+                         kpi_kalan_fark,
+                         kpi_kalan_fark_style,
+                         kpi_toplam_fark,
+                         kpi_toplam_fark_style,
+                    }
+               );
 
                qs.close();
 
