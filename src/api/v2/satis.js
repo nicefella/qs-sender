@@ -58,18 +58,18 @@ module.exports = {
                     { qText: "Ürün Geliri", isNumeric: false },
                ]);
 
-               const fieldGrup = await app.getField(
-                    "[CUSTOMER.Customer Group]"
-               );
-               await fieldGrup.selectValues([
-                    { qText: "Grup Dışı", isNumeric: false },
-               ]);
+               // const fieldGrup = await app.getField(
+               //      "[CUSTOMER.Customer Group]"
+               // );
+               // await fieldGrup.selectValues([
+               //      { qText: "Grup Dışı", isNumeric: false },
+               // ]);
 
-               const thisYear = new Date().getFullYear();
-               const fieldYear = await app.getField("[MasterCalendar.Year]");
-               await fieldYear.selectValues([
-                    { qText: thisYear, isNumeric: true },
-               ]);
+               // const thisYear = new Date().getFullYear();
+               // const fieldYear = await app.getField("[MasterCalendar.Year]");
+               // await fieldYear.selectValues([
+               //      { qText: thisYear, isNumeric: true },
+               // ]);
 
                const topTableObject = await app.getObject(tableTopObjectId);
                const bottomTableObject = await app.getObject(
