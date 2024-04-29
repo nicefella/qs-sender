@@ -36,7 +36,7 @@ async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
                "CM2",
                "Gerçekleşen CM2 Katkı Oran %",
           ],
-          bottomData: taggedBottomData,
+          bottomdata: taggedBottomData,
      };
 
      mailer.sendMail({ to: CONFIG.recipients.satis.to }, "satis", locals, {});
