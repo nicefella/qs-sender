@@ -65,10 +65,10 @@ module.exports = {
                     { qText: "Grup Dışı", isNumeric: false },
                ]);
 
-               // const thisYear = new Date().getFullYear();
+               const thisYear = new Date().getFullYear();
                const fieldYear = await app.getField("[MasterCalendar.Year]");
                await fieldYear.selectValues([
-                    { qText: "2024", isNumeric: true },
+                    { qNum: thisYear, isNumeric: true },
                ]);
 
                const topTableObject = await app.getObject(tableTopObjectId);
