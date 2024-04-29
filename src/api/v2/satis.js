@@ -67,9 +67,7 @@ module.exports = {
 
                const thisYear = new Date().getFullYear();
                const fieldYear = await app.getField("[MasterCalendar.Year]");
-               await fieldYear.selectValues([
-                    { qNum: thisYear, isNumeric: true },
-               ]);
+               await fieldYear.selectValues([{ qNum: 2024, isNumeric: true }]);
 
                const topTableObject = await app.getObject(tableTopObjectId);
                const bottomTableObject = await app.getObject(
