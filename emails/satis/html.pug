@@ -76,6 +76,11 @@ style.
   width:15%
   }
 
+  .center {
+  text-align:center;
+  width:15%
+  }
+
 
   .butce-net-ciro {
   background-color: ''
@@ -162,15 +167,15 @@ html(lang='en')
                       =row[2]
                   td.fatura-ciro.right
                       =row[3]
-                  td.right(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
+                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
                       =row[4]
                   td.butce-cm2.right
                       =row[5]
-                  td.butce-cm2-katki-oran.right
+                  td.butce-cm2-katki-oran.center
                       =row[6]
                   td.cm2.right
                       =row[7]
-                  td.gerceklesen-cm2-katki-oran.right
+                  td.gerceklesen-cm2-katki-oran.center
                       =row[8]
       br
     a(href='https://inkafixing.com') Website
