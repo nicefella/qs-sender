@@ -98,11 +98,24 @@ style.
   }
 
 
+  .gerceklesme-positive {
+    color: #56AE57;
+  }
+
+  .gerceklesme-negative {
+    color: #ff6961;
+  }
+
+
+
+
+
+
 
 doctype html
 html(lang='en')
  body
-    h2(style={color: '#009845'})=`Satış Özeti ${guncelleme_tarihi}`
+    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Özet`
     div
       table.styled-table
         thead
@@ -127,7 +140,9 @@ html(lang='en')
                       =row[5]
                   td.sipirsfat-ciro.right
                       =row[6]
-      br
+    br
+    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Detay`
+    div
       table.styled-table
         thead
           tr
@@ -145,7 +160,7 @@ html(lang='en')
                       =row[2]
                   td.fatura-ciro.right
                       =row[3]
-                  td.gerceklesme.right
+                  td.right(class="gerceklesme-"+Array.from(row[4])[0] === '-' ? 'negative' : 'positive')
                       =row[4]
                   td.butce-cm2.right
                       =row[5]
