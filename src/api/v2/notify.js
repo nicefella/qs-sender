@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable camelcase */
 // const errors = require('restify-errors');
@@ -67,6 +68,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                placer,
                currency,
                firma,
+
                ,
                ,
                alttoplam,

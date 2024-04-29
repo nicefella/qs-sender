@@ -2,6 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable camelcase */
 // const errors = require('restify-errors');
+const getFormatedToday = require("../../helpers/getFormatedToday");
 const mailer = require("../../mailer");
 // const nodemailerNTLMAuth = require('nodemailer-ntlm-auth');
 const qs = require("../../qs");
@@ -32,23 +33,6 @@ const BANK_CONFIG = {
      tavsiye_cizelge_table: "cc22021e-4a0b-474e-9150-dba9822fd0cc",
      subeTable: "BuxMPFy",
 };
-
-function getFormatedToday() {
-     const today = new Date();
-     const yyyy = today.getFullYear();
-     let MM = today.getMonth() + 1; // Months start at 0!
-     let dd = today.getDate();
-
-     let hh = today.getHours();
-     let mm = today.getMinutes();
-
-     if (dd < 10) dd = `0${dd}`;
-     if (MM < 10) MM = `0${MM}`;
-     if (hh < 10) hh = `0${hh}`;
-     if (mm < 10) mm = `0${mm}`;
-
-     return `${dd}.${MM}.${yyyy} ${hh}:${mm}`;
-}
 
 async function getKpiData({ app, objectId, useColoring = false }) {
      const object = await app.getObject(objectId);
