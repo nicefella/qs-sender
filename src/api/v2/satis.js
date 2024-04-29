@@ -66,10 +66,10 @@ module.exports = {
                ]);
 
                // const thisYear = new Date().getFullYear();
-               // const fieldYear = await app.getField("[MasterCalendar.Year]");
-               // await fieldYear.selectValues([
-               //      { qText: thisYear, isNumeric: true },
-               // ]);
+               const fieldYear = await app.getField("[MasterCalendar.Year]");
+               await fieldYear.selectValues([
+                    { qText: "2024", isNumeric: true },
+               ]);
 
                const topTableObject = await app.getObject(tableTopObjectId);
                const bottomTableObject = await app.getObject(
