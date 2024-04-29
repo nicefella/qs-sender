@@ -44,6 +44,7 @@ module.exports = async function tagPivotData(layout) {
           //  console.log(dim);
      });
      console.log(rows);
+     return rows;
      // rows.forEach((row, rowIndex) => {
      //      const newRow = ["total", "TOPLAM", ...row];
      //      console.log(rowIndex);
