@@ -52,6 +52,25 @@ module.exports = {
                console.log("notify satis");
                const session = await qs.init();
                const app = await session.openDoc(appId, "", "", "", false);
+
+               const fieldGelirTipi = await app.getField("[SALES.Gelir Tipi]");
+               await fieldGelirTipi.selectValues([
+                    { qText: "Ürün Geliri", isNumeric: false },
+               ]);
+
+               const fieldGrup = await app.getField(
+                    "[CUSTOMER.Customer Group]"
+               );
+               await fieldGrup.selectValues([
+                    { qText: "Grup Dışı", isNumeric: false },
+               ]);
+
+               const thisYear = new Date().getFullYear();
+               const fieldYear = await app.getField("[MasterCalendar.Year]");
+               await fieldYear.selectValues([
+                    { qText: thisYear, isNumeric: true },
+               ]);
+
                const topTableObject = await app.getObject(tableTopObjectId);
                const bottomTableObject = await app.getObject(
                     tableBottomObjectId
