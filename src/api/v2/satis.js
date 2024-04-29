@@ -13,8 +13,17 @@ const tagPivotData = require("../../helpers/tagPivotData");
 
 async function sendSatisEmail(topCubeLayout) {
      const taggedData = tagPivotData(topCubeLayout);
+     console.log({ topCubeLayout, taggedData });
      const locals = {
           guncelleme_tarihi: getFormatedToday(),
+          cols: [
+               "Satış Ekibi / Ürün Ailesi",
+               "Bütçe Net Ciro",
+               "Sipariş Ciro",
+               "İrsaliye Ciro",
+               "Fatura Fiili Net Ciro",
+               "Sip+İrs+Fat Toplam Ciro",
+          ],
           data: taggedData,
      };
 
