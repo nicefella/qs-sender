@@ -127,6 +127,33 @@ html(lang='en')
                       =row[5]
                   td.sipirsfat-ciro.right
                       =row[6]
-
-
+      br
+      table.styled-table
+        thead
+          tr
+            each item in bottomcols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in bottomdata
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.fatura-ciro.right
+                      =row[3]
+                  td.gerceklesme.right
+                      =row[4]
+                  td.butce-cm2.right
+                      =row[5]
+                  td.butce-cm2-katki-oran.right
+                      =row[6]
+                  td.cm2.right
+                      =row[7]
+                  td.gerceklesen-cm2-katki-oran.right
+                      =row[8]
+      br
     a(href='https://inkafixing.com') Website

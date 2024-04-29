@@ -11,8 +11,9 @@ const CONFIG = require("./../../../config.json");
 const getFormatedToday = require("../../helpers/getFormatedToday");
 const tagPivotData = require("../../helpers/tagPivotData");
 
-async function sendSatisEmail(topCubeLayout) {
+async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
      const taggedData = await tagPivotData(topCubeLayout);
+     const taggedBottomData = await tagPivotData(bottomCubeLayout);
      console.log({ topCubeLayout, taggedData });
      const locals = {
           guncelleme_tarihi: getFormatedToday(),
@@ -25,6 +26,17 @@ async function sendSatisEmail(topCubeLayout) {
                "Sip+İrs+Fat Toplam Ciro",
           ],
           data: taggedData,
+          bottomcols: [
+               "Satış Ekibi / Ürün Ailesi",
+               "Bütçe Net Ciro",
+               "Fatura Fiili Net Ciro",
+               "Gerçekleşme %",
+               "Bütçe CM2",
+               "Bütçe CM2 Katkı Oran %",
+               "CM2",
+               "Gerçekleşen CM2 Katkı Oran %",
+          ],
+          bottomData: taggedBottomData,
      };
 
      mailer.sendMail({ to: CONFIG.recipients.satis.to }, "satis", locals, {});
@@ -37,30 +49,31 @@ const {
 module.exports = {
      get: async (req, res) => {
           try {
-               console.log("notifyweekly");
+               console.log("notify satis");
                const session = await qs.init();
                const app = await session.openDoc(appId, "", "", "", false);
                const topTableObject = await app.getObject(tableTopObjectId);
-               // const bottomTableObject = await app.getObject(
-               //      tableBottomObjectId
-               // );
+               const bottomTableObject = await app.getObject(
+                    tableBottomObjectId
+               );
 
                const topCubeLayout = await topTableObject.getLayout();
+               const bottomCubeLayout = await bottomTableObject.getLayout();
 
-               await sendSatisEmail(topCubeLayout);
+               await sendSatisEmail(topCubeLayout, bottomCubeLayout);
 
                qs.close();
 
                return res.send(
                     JSON.stringify({
-                         result: "success bidweekly v2",
+                         result: "success satis v2",
                     })
                );
           } catch (ex) {
                qs.close();
                return res.send(
                     JSON.stringify({
-                         result: "error bidweekly v2",
+                         result: "error satis v2",
                          message: ex.message,
                     })
                );
