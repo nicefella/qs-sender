@@ -12,7 +12,7 @@ const getFormatedToday = require("../../helpers/getFormatedToday");
 const tagPivotData = require("../../helpers/tagPivotData");
 
 async function sendSatisEmail(topCubeLayout) {
-     const taggedData = tagPivotData(topCubeLayout);
+     const taggedData = await tagPivotData(topCubeLayout);
      console.log({ topCubeLayout, taggedData });
      const locals = {
           guncelleme_tarihi: getFormatedToday(),
