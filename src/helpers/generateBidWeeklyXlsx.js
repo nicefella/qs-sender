@@ -46,6 +46,22 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     },
                },
                {
+                    v: "Müşteri No",
+                    t: "s",
+                    s: {
+                         font: { sz: 11, bold: true, color: { rgb: "000000" } },
+                         alignment: { horizontal: "left" },
+                    },
+               },
+               {
+                    v: "Müşteri",
+                    t: "s",
+                    s: {
+                         font: { sz: 11, bold: true, color: { rgb: "000000" } },
+                         alignment: { horizontal: "left" },
+                    },
+               },
+               {
                     v: "Satış Temsilcisi",
                     t: "s",
                     s: {
