@@ -101,6 +101,14 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                          alignment: { horizontal: "left" },
                     },
                },
+               {
+                    v: "CM1 %",
+                    t: "s",
+                    s: {
+                         font: { sz: 11, bold: true, color: { rgb: "000000" } },
+                         alignment: { horizontal: "right" },
+                    },
+               },
           ];
 
           console.log("excel oluşturuluyor: headers");
