@@ -120,32 +120,13 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     const alignment = index < 4 ? "left" : "right";
                     if (col.qAttrExps !== undefined) {
                          bgColor = col.qAttrExps.qValues[0].qText?.substring(1);
-                         console.log("col", { index, v: col.qText });
-
-                         let v = "";
-                         let t = "s";
-                         let z = "0.00";
-
-                         if (index === 8 || index === 9) {
-                              v = col.qNum;
-                              t = "n";
-                              z = "0.00";
-                              // v = XLSX.SSF.format(col.qNum, "0.00");
-                         } else if (index === 11) {
-                              v = col.qNum;
-                              t = "n";
-                              z = "0.00%";
-                              // v = XLSX.SSF.format(col.qNum, "0.00%");
-                         } else {
-                              v = col.qText;
-                              z = "0.00";
-                         }
+                         //   console.log("col", { index, v: col.qText });
 
                          return {
-                              //   v: col.qText,
-                              v,
-                              t,
-                              z,
+                              v: col.qText,
+                              // v,
+                              t: "s",
+                              // z,
                               // t: "s",
                               s: {
                                    fill: { fgColor: { rgb: bgColor } },
@@ -158,9 +139,31 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                          };
                     }
 
+                    let v = "";
+                    let t = "s";
+                    let z = "0.00";
+
+                    if (index === 8 || index === 9) {
+                         v = col.qNum;
+                         t = "n";
+                         z = "0.00";
+                         // v = XLSX.SSF.format(col.qNum, "0.00");
+                    } else if (index === 11) {
+                         v = col.qNum;
+                         t = "n";
+                         z = "0.00%";
+                         // v = XLSX.SSF.format(col.qNum, "0.00%");
+                    } else {
+                         v = col.qText;
+                         z = "0.00";
+                    }
+
                     return {
-                         v: col.qText,
-                         t: "s",
+                         // v: col.qText,
+                         // t: "s",
+                         v,
+                         t,
+                         z,
                          s: {
                               font: { sz: 11, color: { rgb: "000000" } },
                               alignment: { horizontal: alignment },
