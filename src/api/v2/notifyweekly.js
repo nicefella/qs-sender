@@ -48,7 +48,7 @@ module.exports = {
                               qLeft: 0,
                               qTop: 0,
                               qWidth: 12,
-                              qHeight: 900,
+                              qHeight: 700,
                          },
                     ]
                );
