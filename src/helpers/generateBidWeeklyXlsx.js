@@ -122,20 +122,31 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                          bgColor = col.qAttrExps.qValues[0].qText?.substring(1);
                          console.log("col", { index, v: col.qText });
 
-                         let v;
+                         let v = "";
+                         let t = "s";
+                         let z = "0.00";
 
                          if (index === 8 || index === 9) {
-                              v = XLSX.SSF.format(col.qNum, "0.00");
+                              v = col.qNum;
+                              t = "n";
+                              z = "0.00";
+                              // v = XLSX.SSF.format(col.qNum, "0.00");
                          } else if (index === 11) {
-                              v = XLSX.SSF.format(col.qNum, "0.00%");
+                              v = col.qNum;
+                              t = "n";
+                              z = "0.00%";
+                              // v = XLSX.SSF.format(col.qNum, "0.00%");
                          } else {
                               v = col.qText;
+                              z = "0.00";
                          }
 
                          return {
                               //   v: col.qText,
                               v,
-                              t: "s",
+                              t,
+                              z,
+                              // t: "s",
                               s: {
                                    fill: { fgColor: { rgb: bgColor } },
                                    font: {
