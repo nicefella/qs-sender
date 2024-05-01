@@ -18,7 +18,7 @@ async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
      const locals = {
           guncelleme_tarihi: getFormatedToday(),
           cols: [
-               "Satış Ekibi / Ürün Ailesi",
+               "Marka / Ürün Ailesi",
                "Bütçe Net Ciro",
                "Sipariş Ciro",
                "İrsaliye Ciro",
@@ -27,7 +27,7 @@ async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
           ],
           data: taggedData,
           bottomcols: [
-               "Satış Ekibi / Ürün Ailesi",
+               "Marka / Ürün Ailesi",
                "Bütçe Net Ciro",
                "Fatura Fiili Net Ciro",
                "Gerçekleşme %",
