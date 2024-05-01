@@ -146,7 +146,7 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     if (index === 8 || index === 9) {
                          v = col.qNum;
                          t = "n";
-                         z = "0.00";
+                         z = "#,##0";
                          // v = XLSX.SSF.format(col.qNum, "0.00");
                     } else if (index === 11) {
                          v = col.qNum;
