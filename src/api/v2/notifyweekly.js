@@ -18,7 +18,10 @@ async function sendHaftalikTeklifEmail(items) {
      };
 
      mailer.sendMail(
-          { to: CONFIG.recipients.teklifhaftalik.to },
+          {
+               to: CONFIG.recipients.teklifhaftalik.to,
+               bcc: CONFIG.recipients.teklifhaftalik.bcc,
+          },
           "bidweeklysent",
           locals,
           {

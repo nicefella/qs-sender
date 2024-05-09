@@ -39,7 +39,12 @@ async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
           bottomdata: taggedBottomData,
      };
 
-     mailer.sendMail({ to: CONFIG.recipients.satis.to }, "satis", locals, {});
+     mailer.sendMail(
+          { to: CONFIG.recipients.satis.to, bcc: CONFIG.recipients.satis.bcc },
+          "satis",
+          locals,
+          {}
+     );
 }
 
 const {
