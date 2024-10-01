@@ -200,12 +200,12 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     let t = "s";
                     let z = "0.00";
 
-                    if (index === 8 || index === 9) {
+                    if (index === 12 || index === 13 || index === 16) {
                          v = col.qNum;
                          t = "n";
                          z = "#,##0.00";
                          // v = XLSX.SSF.format(col.qNum, "0.00");
-                    } else if (index === 11) {
+                    } else if (index === 15 || index === 17) {
                          v = col.qNum;
                          t = "n";
                          z = "0.00%";
