@@ -50,7 +50,7 @@ module.exports = {
                          {
                               qLeft: 0,
                               qTop: 0,
-                              qWidth: 12,
+                              qWidth: 19,
                               qHeight: 700,
                          },
                     ]
