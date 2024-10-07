@@ -22,15 +22,7 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     },
                },
                {
-                    v: "Hafta Başlangıç",
-                    t: "s",
-                    s: {
-                         font: { sz: 11, bold: true, color: { rgb: "000000" } },
-                         alignment: { horizontal: "left" },
-                    },
-               },
-               {
-                    v: "Hafta Bitiş",
+                    v: "Teklif Tarihi",
                     t: "s",
                     s: {
                          font: { sz: 11, bold: true, color: { rgb: "000000" } },
@@ -93,7 +85,14 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                          alignment: { horizontal: "left" },
                     },
                },
-
+               {
+                    v: "Fırsat Para Birimi",
+                    t: "s",
+                    s: {
+                         font: { sz: 11, bold: true, color: { rgb: "000000" } },
+                         alignment: { horizontal: "left" },
+                    },
+               },
                {
                     v: "Satış Temsilcisi",
                     t: "s",
