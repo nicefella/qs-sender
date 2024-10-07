@@ -201,10 +201,11 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     let z = "0.00";
 
                     if (
-                         index === 8 ||
-                         index === 12 ||
-                         index === 13 ||
-                         index === 16
+                         (index === 8 ||
+                              index === 12 ||
+                              index === 13 ||
+                              index === 16) &&
+                         col.qNum !== "NaN"
                     ) {
                          v = col.qNum;
                          t = "n";
