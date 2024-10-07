@@ -173,7 +173,8 @@ module.exports = async function generateBidWeeklyXlsx(items) {
           const rows = items.map((item) => {
                const row = item.map((col, index) => {
                     let bgColor = "FFFFFF";
-                    const alignment = index < 12 ? "left" : "right";
+                    const alignment =
+                         index !== 8 && index < 12 ? "left" : "right";
                     if (col.qAttrExps !== undefined) {
                          bgColor = col.qAttrExps.qValues[0].qText?.substring(1);
                          //   console.log("col", { index, v: col.qText });
@@ -199,7 +200,12 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                     let t = "s";
                     let z = "0.00";
 
-                    if (index === 12 || index === 13 || index === 16) {
+                    if (
+                         index === 8 ||
+                         index === 12 ||
+                         index === 13 ||
+                         index === 16
+                    ) {
                          v = col.qNum;
                          t = "n";
                          z = "#,##0.00";
