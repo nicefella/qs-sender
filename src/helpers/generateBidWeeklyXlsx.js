@@ -205,7 +205,7 @@ module.exports = async function generateBidWeeklyXlsx(items) {
                               index === 12 ||
                               index === 13 ||
                               index === 16) &&
-                         col.qNum !== "NaN"
+                         typeof col.qNum === "number"
                     ) {
                          v = col.qNum;
                          t = "n";
