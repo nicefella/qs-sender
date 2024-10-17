@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable quotes */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable camelcase */
@@ -44,18 +45,29 @@ module.exports = {
                const app = await session.openDoc(appId, "", "", "", false);
                const baseTableObject = await app.getObject(tableObjectId);
 
-               const cubeData = await baseTableObject.getHyperCubeData(
-                    "/qHyperCubeDef",
-                    [
-                         {
-                              qLeft: 0,
-                              qTop: 0,
-                              qWidth: 19,
-                              qHeight: 500,
-                         },
-                    ]
-               );
-               const [{ qMatrix: data }] = cubeData;
+               const objectLayout = await baseTableObject.getLayout();
+
+               const rowCount = objectLayout.qHyperCube.qSize.qcy;
+               const pageSize = 500;
+               const pages = Math.ceil(rowCount / pageSize);
+               let data = [];
+
+               // eslint-disable-next-line no-plusplus
+               for (let page = 0; page < pages; page++) {
+                    const cubeData = await baseTableObject.getHyperCubeData(
+                         "/qHyperCubeDef",
+                         [
+                              {
+                                   qLeft: 0,
+                                   qTop: page * pageSize,
+                                   qWidth: 19,
+                                   qHeight: pageSize,
+                              },
+                         ]
+                    );
+                    const [{ qMatrix }] = cubeData;
+                    data = data.concat(qMatrix);
+               }
 
                await sendHaftalikTeklifEmail(data);
 
