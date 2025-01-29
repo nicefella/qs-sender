@@ -32,6 +32,7 @@ const BANK_CONFIG = {
 
      tavsiye_cizelge_table: "cc22021e-4a0b-474e-9150-dba9822fd0cc",
      subeTable: "BuxMPFy",
+     muhasebeHesapBakiyeleriTable: "gZBpSp",
 };
 
 async function getKpiData({ app, objectId, useColoring = false }) {
@@ -106,6 +107,14 @@ module.exports = {
                          app,
                          objectId: BANK_CONFIG.subeTable,
                     });
+
+               const {
+                    data: muhasebeHesapBakiyeleriData,
+                    subTotals: muhasebeHesapBakiyeleriSubTotals,
+               } = await getTableData({
+                    app,
+                    objectId: BANK_CONFIG.muhasebeHesapBakiyeleriTable,
+               });
 
                const {
                     value: kpi_baglanan_para,
@@ -224,6 +233,9 @@ module.exports = {
                          faizOranlariVeMevduatlarData,
                          subeData,
                          subeSubTotals,
+
+                         muhasebeHesapBakiyeleriData,
+                         muhasebeHesapBakiyeleriSubTotals,
 
                          kpi_odenecek_anapara,
                          kpi_odenecek_anapara_style,
