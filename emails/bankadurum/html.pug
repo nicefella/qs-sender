@@ -670,6 +670,15 @@ html(lang='en')
                         th
                             .tm USD
                 tbody
+                    tr
+                        td(colspan=2)
+                            .v.bold Toplam
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[2].qText}`
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[3].qText}`
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[4].qText}`
                 each datum, index in muhasebeHesapBakiyeleriData
                           if(index % 2 === 0)
                             tr.even
