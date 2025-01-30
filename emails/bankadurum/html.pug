@@ -257,6 +257,52 @@ html(lang='en')
         td
             table.styled-table
                 thead
+                    tr.blue
+                        th(colspan=6)
+                            .tm.bold Muhasebe Hesap Bakiyeleri
+                    tr.blue
+                        th(colspan=2)
+                            .tm Hesap
+                        th
+                            .tm TL
+                        th
+                            .tm EUR
+                        th
+                            .tm USD
+                tbody
+                each datum, index in muhasebeHesapBakiyeleriData
+                          if(index % 2 === 0)
+                            tr.even
+                                td(colspan=2)
+                                    .v #{datum[1].qText}
+                                td
+                                    .v #{datum[2].qText}
+                                td
+                                    .v #{datum[3].qText}
+                                td
+                                    .v #{datum[4].qText}
+                          else
+                            tr
+                                td(colspan=2)
+                                    .v #{datum[1].qText}
+                                td
+                                    .v #{datum[2].qText}
+                                td
+                                    .v #{datum[3].qText}
+                                td
+                                    .v #{datum[4].qText}
+                tr
+                    td(colspan=2)
+                        .v.bold Toplam
+                    td
+                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[0].qText}`
+                    td
+                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[1].qText}`
+                    td
+                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[2].qText}`
+            br
+            table.styled-table
+                thead
                     tr.green
                         th.empty
                             .t
@@ -375,7 +421,6 @@ html(lang='en')
                             .v=`${kpi_kalan_fkv}₺`
                         td.column33
                             .v=`${kpi_toplam_fkv}₺`
-
             table.styled-table
                 thead
                     tr.yellow
@@ -655,51 +700,6 @@ html(lang='en')
                         td
                             .v #{datum[12].qText}
             br
-            table.styled-table
-                thead
-                    tr.blue
-                        th(colspan=6)
-                            .tm.bold Muhasebe Hesap Bakiyeleri
-                    tr.blue
-                        th(colspan=2)
-                            .tm Hesap
-                        th
-                            .tm TL
-                        th
-                            .tm EUR
-                        th
-                            .tm USD
-                tbody
-                each datum, index in muhasebeHesapBakiyeleriData
-                          if(index % 2 === 0)
-                            tr.even
-                                td(colspan=2)
-                                    .v #{datum[1].qText}
-                                td
-                                    .v #{datum[2].qText}
-                                td
-                                    .v #{datum[3].qText}
-                                td
-                                    .v #{datum[4].qText}
-                          else
-                            tr
-                                td(colspan=2)
-                                    .v #{datum[1].qText}
-                                td
-                                    .v #{datum[2].qText}
-                                td
-                                    .v #{datum[3].qText}
-                                td
-                                    .v #{datum[4].qText}
-                tr
-                    td(colspan=2)
-                        .v.bold Toplam
-                    td
-                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[0].qText}`
-                    td
-                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[1].qText}`
-                    td
-                        .v.bold=`${muhasebeHesapBakiyeleriSubTotals[2].qText}`
             br
     hr
     small=`INKA | Istanbul | Turkey `
