@@ -656,21 +656,21 @@ html(lang='en')
                             .v #{datum[12].qText}
             br
             table.styled-table
-                        thead
-                            tr.blue
-                                th(colspan=6)
-                                    .tm.bold Muhasebe Hesap Bakiyeleri
-                            tr.blue
-                                th(colspan=2)
-                                    .tm Hesap
-                                th
-                                    .tm TL
-                                th
-                                    .tm EUR
-                                th
-                                    .tm USD
-                        tbody
-                        each datum, index in muhasebeHesapBakiyeleriData
+                thead
+                    tr.blue
+                        th(colspan=6)
+                            .tm.bold Muhasebe Hesap Bakiyeleri
+                    tr.blue
+                        th(colspan=2)
+                            .tm Hesap
+                        th
+                            .tm TL
+                        th
+                            .tm EUR
+                        th
+                            .tm USD
+                tbody
+                each datum, index in muhasebeHesapBakiyeleriData
                           if(index % 2 === 0)
                             tr.even
                                 td(colspan=2)
@@ -692,7 +692,6 @@ html(lang='en')
                                 td
                                     .v #{datum[4].qText}
                     br
-
     hr
     small=`INKA | Istanbul | Turkey `
     a(href='https://inkafixing.com') Website
