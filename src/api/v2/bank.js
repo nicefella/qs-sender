@@ -116,6 +116,11 @@ module.exports = {
                     objectId: BANK_CONFIG.muhasebeHesapBakiyeleriTable,
                });
 
+               console.log(
+                    "muhasebeHesapBakiyeleriSubTotals",
+                    muhasebeHesapBakiyeleriSubTotals
+               );
+
                const {
                     value: kpi_baglanan_para,
                     style: kpi_baglanan_para_style,
