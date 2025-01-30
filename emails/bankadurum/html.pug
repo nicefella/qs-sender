@@ -670,15 +670,6 @@ html(lang='en')
                         th
                             .tm USD
                 tbody
-                    tr
-                        td(colspan=2)
-                            .v.bold Toplam
-                        td
-                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[2].qText}`
-                        td
-                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[3].qText}`
-                        td
-                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[4].qText}`
                 each datum, index in muhasebeHesapBakiyeleriData
                           if(index % 2 === 0)
                             tr.even
@@ -700,6 +691,15 @@ html(lang='en')
                                     .v #{datum[3].qText}
                                 td
                                     .v #{datum[4].qText}
+                    tr
+                        td(colspan=2)
+                            .v.bold Toplam
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[0].qText}`
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[1].qText}`
+                        td
+                            .v.bold=`${muhasebeHesapBakiyeleriSubTotals[2].qText}`
             br
     hr
     small=`INKA | Istanbul | Turkey `
