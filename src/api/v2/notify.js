@@ -80,6 +80,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                esikAltiUrunAdetYeni,
                maliyetiOlmayanUrunAdet,
                maliyetiolmayanalttoplam,
+               sirket,
           ] = bid;
           console.log(`${teklifNo.qText} alınıyor`);
           await bidField.selectValues([
@@ -123,6 +124,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
           // const { fileName, file } = await downloadFile(fileResponse.qUrl);
           console.log(`${teklifNo.qText} dosya indirildi.`);
           const locals = {
+               sirket: sirket.qText,
                teklifNo: teklifNo.qText,
                tarih: tarih.qText,
                placer: placer.qText,
