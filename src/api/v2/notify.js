@@ -101,6 +101,7 @@ function bidEmailerFunctionFactory({ bidField, detailTableObject }) {
                     },
                ]
           );
+          console.log({ detailCubeData });
           const [{ qMatrix: items }] = detailCubeData;
 
           const {
