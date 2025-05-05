@@ -201,7 +201,7 @@ module.exports = {
                          {
                               qLeft: 0,
                               qTop: 0,
-                              qWidth: 18,
+                              qWidth: 19,
                               qHeight: 5,
                          },
                     ]
