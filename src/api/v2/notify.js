@@ -186,16 +186,22 @@ module.exports = {
                //  sendMail().catch(console.error);
                console.log("notify");
                const session = await qs.init();
+               console.log("session init");
                const app = await session.openDoc(appId, "", "", "", false);
+               console.log("app opened");
                const baseTableObject = await app.getObject(baseTableObjectId);
+               console.log("baseTableObject opened");
                const detailTableObject = await app.getObject(
                     detailTableObjectId
                );
+               console.log("detailTableObject opened");
                const bidField = await app.getField(bidFieldName);
+               console.log("bidField opened");
                const sendBidEmail = bidEmailerFunctionFactory({
                     bidField,
                     detailTableObject,
                });
+               console.log("sendBidEmail function created");
                const cubeData = await baseTableObject.getHyperCubeData(
                     "/qHyperCubeDef",
                     [
@@ -207,15 +213,20 @@ module.exports = {
                          },
                     ]
                );
+               console.log("cubeData opened");
                const [{ qMatrix: bids }] = cubeData;
+               console.log("bids opened");
 
                await bids.reduce(
                     (previousPromise, bid) =>
                          previousPromise.then(() => sendBidEmail(bid)),
                     Promise.resolve()
                );
+               console.log("bids reduced");
 
                qs.close();
+
+               console.log("qs closed");
 
                return res.send(
                     JSON.stringify({
