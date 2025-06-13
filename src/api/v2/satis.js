@@ -119,6 +119,9 @@ module.exports = {
                const topCubeLayoutEUR = await topTableObject.getLayout();
                const bottomCubeLayoutEUR = await bottomTableObject.getLayout();
 
+               // clear currency field selections
+               await fieldCurrency.clear();
+
                await sendSatisEmail(
                     topCubeLayout,
                     bottomCubeLayout,
