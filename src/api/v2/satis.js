@@ -11,9 +11,20 @@ const CONFIG = require("./../../../config.json");
 const getFormatedToday = require("../../helpers/getFormatedToday");
 const tagPivotData = require("../../helpers/tagPivotData");
 
-async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
+async function sendSatisEmail(
+     topCubeLayout,
+     bottomCubeLayout,
+     topCubeLayoutUSD,
+     bottomCubeLayoutUSD,
+     topCubeLayoutEUR,
+     bottomCubeLayoutEUR
+) {
      const taggedData = await tagPivotData(topCubeLayout);
      const taggedBottomData = await tagPivotData(bottomCubeLayout);
+     const taggedDataUSD = await tagPivotData(topCubeLayoutUSD);
+     const taggedBottomDataUSD = await tagPivotData(bottomCubeLayoutUSD);
+     const taggedDataEUR = await tagPivotData(topCubeLayoutEUR);
+     const taggedBottomDataEUR = await tagPivotData(bottomCubeLayoutEUR);
      console.log({ topCubeLayout, taggedData });
      const locals = {
           guncelleme_tarihi: getFormatedToday(),
@@ -37,11 +48,15 @@ async function sendSatisEmail(topCubeLayout, bottomCubeLayout) {
                "Gerçekleşen CM2 Katkı Oran %",
           ],
           bottomdata: taggedBottomData,
+          dataUSD: taggedDataUSD,
+          bottomdataUSD: taggedBottomDataUSD,
+          dataEUR: taggedDataEUR,
+          bottomdataEUR: taggedBottomDataEUR,
      };
 
      mailer.sendMail(
           { to: CONFIG.recipients.satis.to, bcc: CONFIG.recipients.satis.bcc },
-          "satis",
+          "satiscurrency",
           locals,
           {}
      );
@@ -70,6 +85,10 @@ module.exports = {
                     { qText: "Grup Dışı", isNumeric: false },
                ]);
 
+               const fieldCurrency = await app.getField("BUDGETCURRENCY");
+               const variableCurrency = await app.getVariableByName(
+                    "vSelectedCurrency"
+               );
                const thisYear = new Date().getFullYear();
                const fieldYear = await app.getField("[MasterCalendar.Year]");
                await fieldYear.selectValues([
@@ -84,7 +103,30 @@ module.exports = {
                const topCubeLayout = await topTableObject.getLayout();
                const bottomCubeLayout = await bottomTableObject.getLayout();
 
-               await sendSatisEmail(topCubeLayout, bottomCubeLayout);
+               // set the currency variable to 'USD'
+               await variableCurrency.setStringValue("USD");
+               await fieldCurrency.selectValues([
+                    { qText: "USD", isNumeric: false },
+               ]);
+               const topCubeLayoutUSD = await topTableObject.getLayout();
+               const bottomCubeLayoutUSD = await bottomTableObject.getLayout();
+
+               // set the currency variable to 'EUR'
+               await variableCurrency.setStringValue("EUR");
+               await fieldCurrency.selectValues([
+                    { qText: "EUR", isNumeric: false },
+               ]);
+               const topCubeLayoutEUR = await topTableObject.getLayout();
+               const bottomCubeLayoutEUR = await bottomTableObject.getLayout();
+
+               await sendSatisEmail(
+                    topCubeLayout,
+                    bottomCubeLayout,
+                    topCubeLayoutUSD,
+                    bottomCubeLayoutUSD,
+                    topCubeLayoutEUR,
+                    bottomCubeLayoutEUR
+               );
 
                qs.close();
 
