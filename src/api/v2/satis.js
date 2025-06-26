@@ -56,7 +56,7 @@ async function sendSatisEmail(
 
      mailer.sendMail(
           { to: CONFIG.recipients.satis.to, bcc: CONFIG.recipients.satis.bcc },
-          "satiscurrency",
+          "satis",
           locals,
           {}
      );
