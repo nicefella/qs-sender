@@ -56,7 +56,7 @@ async function sendSatisEmail(
 
      mailer.sendMail(
           { to: CONFIG.recipients.satis.to, bcc: CONFIG.recipients.satis.bcc },
-          "satis",
+          "satiscurrency",
           locals,
           {}
      );
@@ -76,6 +76,7 @@ module.exports = {
                const fieldGelirTipi = await app.getField("[SALES.Gelir Tipi]");
                await fieldGelirTipi.selectValues([
                     { qText: "Ürün Geliri", isNumeric: false },
+                    { qText: "Fiyat Farkı Geliri", isNumeric: false },
                ]);
 
                const fieldGrup = await app.getField(
