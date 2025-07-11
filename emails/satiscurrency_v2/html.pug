@@ -1,0 +1,310 @@
+style.
+  body {
+    color:'#5f60ff';
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding:10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .styled-table {
+        font-size: 16px;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+        border: 1px solid #cccccc;
+        padding: 10px;
+    }
+
+  td {
+    text-align:center;
+    padding: 8px;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  th {
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color: #efefef;
+    color: #000000;
+
+  }
+
+  .f-table--body__collapsed {
+  visibility: collapse;
+  }
+  .f-table--body__collapsed tr td div.row-column-content {
+  max-height: 0px;
+  opacity: 0;
+  }
+
+  .f-table--body__expanded {
+  visibility: visible;
+  }
+
+  .f-table--body__expanded tr td div.row-column-content {
+  max-height: 100px;
+  opacity: 1;
+  }
+
+  #f-table-body {
+  background-color: none;
+  transition: visibility 0.4s;
+  }
+
+  #f-table-body tr td div {
+  transition: max-height 0.5s, opacity 0.4s;
+  }
+
+
+  .dim-column {
+  width:25%;
+  text-align:left
+  }
+
+  .dim-total {
+  font-weight:bold;
+  }
+
+  .dim-subtotal {
+  font-weight:bold;
+  }
+  .dim-node {
+  padding-left:30px;
+  }
+
+  .right {
+  text-align:right;
+  width:15%;
+  border-right: 1px solid #cccccc;
+  }
+
+  .center {
+  text-align:center;
+  width:15%;
+  border-right: 1px solid #cccccc;
+  }
+
+  .bold {
+  font-weight:bold;
+  }
+
+
+  .butce-net-ciro {
+  background-color: ''
+  }
+
+  .siparis-ciro {
+  background-color: #ffb44988
+  }
+
+  .irsaliye-ciro {
+  background-color: rgba(150, 111, 214, 0.5)
+  }
+
+
+  .fatura-ciro {
+  background-color: #A7C7E7
+  }
+
+  .sipirsfat-ciro {
+  background-color: #FBBD9988
+  }
+
+
+  .gerceklesme-positive {
+    font-weight: bold;
+    color: #56AE57;
+  }
+
+  .gerceklesme-negative {
+    font-weight: bold;
+    color: #ff6961;
+  }
+
+
+
+
+
+
+
+doctype html
+html(lang='en')
+ body
+    h2(style={color: '#009845'})=`USD - Sipariş / İrsaliye / Fatura Özet`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in cols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in dataUSD
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.siparis-ciro.right
+                      =row[3]
+                  td.irsaliye-ciro.right
+                      =row[4]
+                  td.fatura-ciro.right
+                      =row[5]
+                  td.sipirsfat-ciro.right
+                      =row[6]
+
+    br
+    h2(style={color: '#009845'})=`USD - Sipariş / İrsaliye / Fatura Detay`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in bottomcols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in bottomdataUSD
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.fatura-ciro.right
+                      =row[3]
+                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
+                      =row[4]
+                  td.butce-cm2.right
+                      =row[5]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[6]
+                  td.cm2.right
+                      =row[7]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[8]
+
+    br
+    h2(style={color: '#009845'})=`EUR - Sipariş / İrsaliye / Fatura Özet`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in cols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in dataEUR
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.siparis-ciro.right
+                      =row[3]
+                  td.irsaliye-ciro.right
+                      =row[4]
+                  td.fatura-ciro.right
+                      =row[5]
+                  td.sipirsfat-ciro.right
+                      =row[6]
+
+    br
+    h2(style={color: '#009845'})=`EUR - Sipariş / İrsaliye / Fatura Detay`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in bottomcols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in bottomdataEUR
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.fatura-ciro.right
+                      =row[3]
+                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
+                      =row[4]
+                  td.butce-cm2.right
+                      =row[5]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[6]
+                  td.cm2.right
+                      =row[7]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[8]
+
+    br
+    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Özet`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in cols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in data
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.siparis-ciro.right
+                      =row[3]
+                  td.irsaliye-ciro.right
+                      =row[4]
+                  td.fatura-ciro.right
+                      =row[5]
+                  td.sipirsfat-ciro.right
+                      =row[6]
+
+    br
+    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Detay`
+    div
+      table.styled-table
+        thead
+          tr
+            each item in bottomcols
+              th= item
+        tbody(
+          id='f-table-body'
+          class='f-table--body__expanded'
+          )
+            each row in bottomdata
+              tr
+                  td.dim-column(class="dim-"+row[0])
+                      =row[1]
+                  td.butce-net-ciro.right
+                      =row[2]
+                  td.fatura-ciro.right
+                      =row[3]
+                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
+                      =row[4]
+                  td.butce-cm2.right
+                      =row[5]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[6]
+                  td.cm2.right
+                      =row[7]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[8]
+
+    a(href='https://inkafixing.com') Website
