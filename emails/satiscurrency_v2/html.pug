@@ -114,6 +114,21 @@ style.
   background-color: #FBBD9988
   }
 
+  .butce-cm2 {
+  background-color: #E6E6FA
+  }
+
+  .butce-cm2-katki-oran {
+  background-color: #F0E68C
+  }
+
+  .cm2 {
+  background-color: #E0FFFF
+  }
+
+  .gerceklesen-cm2-katki-oran {
+  background-color: #FFE4E1
+  }
 
   .gerceklesme-positive {
     font-weight: bold;
@@ -134,7 +149,7 @@ style.
 doctype html
 html(lang='en')
  body
-    h2(style={color: '#009845'})=`USD - Sipariş / İrsaliye / Fatura Özet`
+    h2(style={color: '#009845'})=`USD - Satış Raporu`
     div
       table.styled-table
         thead
@@ -142,7 +157,7 @@ html(lang='en')
             each item in cols
               th= item
         tbody(
-          id='f-table-body'
+          id='f-table-body-usd'
           class='f-table--body__expanded'
           )
             each row in dataUSD
@@ -159,40 +174,19 @@ html(lang='en')
                       =row[5]
                   td.sipirsfat-ciro.right
                       =row[6]
-
-    br
-    h2(style={color: '#009845'})=`USD - Sipariş / İrsaliye / Fatura Detay`
-    div
-      table.styled-table
-        thead
-          tr
-            each item in bottomcols
-              th= item
-        tbody(
-          id='f-table-body'
-          class='f-table--body__expanded'
-          )
-            each row in bottomdataUSD
-              tr
-                  td.dim-column(class="dim-"+row[0])
-                      =row[1]
-                  td.butce-net-ciro.right
-                      =row[2]
-                  td.fatura-ciro.right
-                      =row[3]
-                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
-                      =row[4]
-                  td.butce-cm2.right
-                      =row[5]
-                  td.butce-cm2-katki-oran.center.bold
-                      =row[6]
-                  td.cm2.right
+                  td.center(class="gerceklesme-"+(Array.from(row[7])[0] === '-' ? 'negative' : 'positive'))
                       =row[7]
-                  td.gerceklesen-cm2-katki-oran.center.bold
+                  td.butce-cm2.right
                       =row[8]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[9]
+                  td.cm2.right
+                      =row[10]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[11]
 
     br
-    h2(style={color: '#009845'})=`EUR - Sipariş / İrsaliye / Fatura Özet`
+    h2(style={color: '#009845'})=`EUR - Satış Raporu`
     div
       table.styled-table
         thead
@@ -200,7 +194,7 @@ html(lang='en')
             each item in cols
               th= item
         tbody(
-          id='f-table-body'
+          id='f-table-body-eur'
           class='f-table--body__expanded'
           )
             each row in dataEUR
@@ -217,40 +211,19 @@ html(lang='en')
                       =row[5]
                   td.sipirsfat-ciro.right
                       =row[6]
-
-    br
-    h2(style={color: '#009845'})=`EUR - Sipariş / İrsaliye / Fatura Detay`
-    div
-      table.styled-table
-        thead
-          tr
-            each item in bottomcols
-              th= item
-        tbody(
-          id='f-table-body'
-          class='f-table--body__expanded'
-          )
-            each row in bottomdataEUR
-              tr
-                  td.dim-column(class="dim-"+row[0])
-                      =row[1]
-                  td.butce-net-ciro.right
-                      =row[2]
-                  td.fatura-ciro.right
-                      =row[3]
-                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
-                      =row[4]
-                  td.butce-cm2.right
-                      =row[5]
-                  td.butce-cm2-katki-oran.center.bold
-                      =row[6]
-                  td.cm2.right
+                  td.center(class="gerceklesme-"+(Array.from(row[7])[0] === '-' ? 'negative' : 'positive'))
                       =row[7]
-                  td.gerceklesen-cm2-katki-oran.center.bold
+                  td.butce-cm2.right
                       =row[8]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[9]
+                  td.cm2.right
+                      =row[10]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[11]
 
     br
-    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Özet`
+    h2(style={color: '#009845'})=`USD - Toplam Satış Raporu`
     div
       table.styled-table
         thead
@@ -258,10 +231,10 @@ html(lang='en')
             each item in cols
               th= item
         tbody(
-          id='f-table-body'
+          id='f-table-body-total-usd'
           class='f-table--body__expanded'
           )
-            each row in data
+            each row in totalDataUSD
               tr
                   td.dim-column(class="dim-"+row[0])
                       =row[1]
@@ -275,36 +248,55 @@ html(lang='en')
                       =row[5]
                   td.sipirsfat-ciro.right
                       =row[6]
+                  td.center(class="gerceklesme-"+(Array.from(row[7])[0] === '-' ? 'negative' : 'positive'))
+                      =row[7]
+                  td.butce-cm2.right
+                      =row[8]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[9]
+                  td.cm2.right
+                      =row[10]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[11]
 
     br
-    h2(style={color: '#009845'})=`Sipariş / İrsaliye / Fatura Detay`
+    h2(style={color: '#009845'})=`EUR - Toplam Satış Raporu`
     div
       table.styled-table
         thead
           tr
-            each item in bottomcols
+            each item in cols
               th= item
         tbody(
-          id='f-table-body'
+          id='f-table-body-total-eur'
           class='f-table--body__expanded'
           )
-            each row in bottomdata
+            each row in totalDataEUR
               tr
                   td.dim-column(class="dim-"+row[0])
                       =row[1]
                   td.butce-net-ciro.right
                       =row[2]
-                  td.fatura-ciro.right
+                  td.siparis-ciro.right
                       =row[3]
-                  td.center(class="gerceklesme-"+(Array.from(row[4])[0] === '-' ? 'negative' : 'positive'))
+                  td.irsaliye-ciro.right
                       =row[4]
-                  td.butce-cm2.right
+                  td.fatura-ciro.right
                       =row[5]
-                  td.butce-cm2-katki-oran.center.bold
+                  td.sipirsfat-ciro.right
                       =row[6]
-                  td.cm2.right
+                  td.center(class="gerceklesme-"+(Array.from(row[7])[0] === '-' ? 'negative' : 'positive'))
                       =row[7]
-                  td.gerceklesen-cm2-katki-oran.center.bold
+                  td.butce-cm2.right
                       =row[8]
+                  td.butce-cm2-katki-oran.center.bold
+                      =row[9]
+                  td.cm2.right
+                      =row[10]
+                  td.gerceklesen-cm2-katki-oran.center.bold
+                      =row[11]
 
-    a(href='https://inkafixing.com') Website
+    br
+    div(style="margin-top: 20px; padding: 10px; font-size: 12px; color: #666;")
+      p Güncelleme Tarihi: #{guncelleme_tarihi}
+      a(href='https://inkafixing.com' style="color: #009845; text-decoration: none;") Website
