@@ -75,7 +75,7 @@ module.exports = {
                     { qText: "Grup Dışı", isNumeric: false },
                ]);
 
-               const fieldCurrency = await app.getField("BUDGETCURRENCY");
+               const fieldBrand = await app.getField("Materyal.BRAND");
                const variableCurrency = await app.getVariableByName(
                     "vSelectedCurrency"
                );
@@ -89,20 +89,20 @@ module.exports = {
 
                // set the currency variable to 'USD'
                await variableCurrency.setStringValue("USD");
-               await fieldCurrency.selectValues([
-                    { qText: "USD", isNumeric: false },
+               await fieldBrand.selectValues([
+                    { qText: "INKA", isNumeric: false },
                ]);
                const cubeLayoutUSD = await v2TableObject.getLayout();
 
                // set the currency variable to 'EUR'
                await variableCurrency.setStringValue("EUR");
-               await fieldCurrency.selectValues([
-                    { qText: "EUR", isNumeric: false },
+               await fieldBrand.selectValues([
+                    { qText: "ÖZEL MARKA", isNumeric: false },
                ]);
                const cubeLayoutEUR = await v2TableObject.getLayout();
 
                // clear currency field selections
-               await fieldCurrency.clear();
+               await fieldBrand.clear();
 
                await variableCurrency.setStringValue("EUR");
                const totalCubeLayoutEUR = await v2TableObject.getLayout();
