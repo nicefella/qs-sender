@@ -106,9 +106,10 @@ module.exports = {
                await fieldBrand.selectValues([
                     { qText: "ÖZEL MARKA", isNumeric: false },
                ]);
-               await fieldSalesTeam.selectValues([
-                    { qText: "Özel marka satış ekibi", isNumeric: false },
-               ]);
+               await fieldSalesTeam.clear();
+               //  await fieldSalesTeam.selectValues([
+               //       { qText: "Özel marka satış ekibi", isNumeric: false },
+               //  ]);
                const cubeLayoutEUR = await v2TableObject.getLayout();
 
                // clear currency field selections
