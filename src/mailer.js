@@ -56,6 +56,8 @@ module.exports = {
                ];
           }
 
-          email.send(options).then(console.log).catch(console.error);
+          email.send(options)
+               .then(console.log)
+               .catch((e) => console.error("Error sending email:", e));
      },
 };
